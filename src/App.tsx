@@ -1,12 +1,21 @@
 import { Route, Routes } from "react-router-dom"
 import Layout from "./pages/Layout"
+import Home from "./pages/Home"
+import Resume from "./pages/Resume"
+import Portfolio from "./pages/Portfolio"
+import Blog from "./pages/Blog"
+import Contact from "./pages/Contact"
 
 const App = () => {
   return (
-    <div className="h-screen w-screen bg-black/90 text-white">
+    <div className="min-h-screen bg-black/90 text-white">
       <Routes> 
       <Route path="/" element={<Layout />}>
-        {/* <Route index element={<Home />} />   */}
+        <Route index element={<Home />} />
+        <Route path="resume" element={<Resume />} />
+        <Route path="portfolio" element={<Portfolio />} />
+        <Route path="blog" element={<Blog />} />
+        <Route path="contact" element={<Contact />} />
       </Route>
     </Routes>
     </div>

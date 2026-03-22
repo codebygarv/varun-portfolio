@@ -3,7 +3,7 @@ import { Mail, MapPin, Phone, Github, Linkedin, Twitter } from "lucide-react";
 
 const Sidebar = () => {
   return (
-    <div className="group relative w-full md:w-1/4 lg:w-[22%] bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-500 hover:bg-zinc-900/60 hover:border-white/20 shadow-2xl overflow-hidden">
+    <div className="group lg:sticky lg:top-8 w-full lg:w-[25%] xl:w-[22%] bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 transition-all duration-500 hover:bg-zinc-900/60 hover:border-white/20 shadow-2xl overflow-hidden shrink-0 z-10">
       <div className="flex flex-col gap-6">
 
         {/* Top Layout */}
@@ -40,7 +40,7 @@ const Sidebar = () => {
           <div className="flex flex-col gap-4">
             {/* Email */}
             <div className="flex items-center gap-4">
-              <div className="flex justify-center items-center bg-zinc-900/40 border border-white/10 rounded-xl h-10 w-10 shrink-0 shadow-sm transition-colors hover:bg-zinc-900/60 hover:border-white/30 text-[#8A8A8B] hover:text-white">
+              <div className="flex justify-center items-center bg-zinc-900/40 border border-white/10 rounded-xl h-10 w-10 shrink-0 shadow-sm transition-colors hover:bg-zinc-900/60 hover:border-white/30 text-[#ABB6FF] hover:text-white">
                 <Mail size={16} />
               </div>
               <div className="flex flex-col overflow-hidden">
@@ -51,7 +51,7 @@ const Sidebar = () => {
 
             {/* Location */}
             <div className="flex items-center gap-4">
-              <div className="flex justify-center items-center bg-zinc-900/40 border border-white/10 rounded-xl h-10 w-10 shrink-0 shadow-sm transition-colors hover:bg-zinc-900/60 hover:border-white/30 text-[#8A8A8B] hover:text-white">
+              <div className="flex justify-center items-center bg-zinc-900/40 border border-white/10 rounded-xl h-10 w-10 shrink-0 shadow-sm transition-colors hover:bg-zinc-900/60 hover:border-white/30 text-[#ABB6FF] hover:text-white">
                 <MapPin size={16} />
               </div>
               <div className="flex flex-col overflow-hidden">
@@ -62,7 +62,7 @@ const Sidebar = () => {
 
             {/* Contact Number */}
             <div className="flex items-center gap-4">
-              <div className="flex justify-center items-center bg-zinc-900/40 border border-white/10 rounded-xl h-10 w-10 shrink-0 shadow-sm transition-colors hover:bg-zinc-900/60 hover:border-white/30 text-[#8A8A8B] hover:text-white">
+              <div className="flex justify-center items-center bg-zinc-900/40 border border-white/10 rounded-xl h-10 w-10 shrink-0 shadow-sm transition-colors hover:bg-zinc-900/60 hover:border-white/30 text-[#ABB6FF] hover:text-white">
                 <Phone size={16} />
               </div>
               <div className="flex flex-col overflow-hidden">
@@ -70,6 +70,26 @@ const Sidebar = () => {
                 <span className="text-sm text-white truncate">+91 9588710931</span>
               </div>
             </div>
+
+            {/* Birthday */}
+            <div className="flex items-center gap-4">
+              <div className="flex justify-center items-center bg-zinc-900/40 border border-white/10 rounded-xl h-10 w-10 shrink-0 shadow-sm transition-colors hover:bg-zinc-900/60 hover:border-white/30 text-[#ABB6FF] hover:text-white">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 15a2 2 0 01-2 2H5a2 2 0 01-2-2V9a2 2 0 012-2h14a2 2 0 012 2v6z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 7V3m0 0a2 2 0 00-2 2m2-2a2 2 0 012 2m-4 5h8"></path></svg>
+              </div>
+              <div className="flex flex-col overflow-hidden">
+                <span className="text-[10px] text-[#8A8A8B] uppercase tracking-wider font-semibold">Birthday</span>
+                <span className="text-sm text-white truncate">1 December, 2001</span>
+              </div>
+            </div>
+
+          </div>
+
+          {/* Download Resume Button */}
+          <div className="flex justify-center mt-2">
+            <button className="flex items-center gap-2 bg-gradient-to-r from-zinc-800 to-zinc-900 border border-white/10 hover:border-[#ABB6FF]/50 text-white px-6 py-3 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#ABB6FF]/10 shrink-0 w-full justify-center group font-medium text-sm">
+              <span>Download Resume</span>
+              <svg className="w-4 h-4 text-[#8A8A8B] group-hover:text-[#ABB6FF] transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            </button>
           </div>
 
           {/* Social Icons */}

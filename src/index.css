@@ -1,0 +1,17 @@
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212; /* Matches the black/90 theme background */
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2B2B2C; /* Matches the navbar/sidebar */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ABB6FF; /* Accent highlight color */
+}
