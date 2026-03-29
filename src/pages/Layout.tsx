@@ -58,17 +58,17 @@ const Layout = () => {
           padding-bottom: 96px;
         }
         @media (min-width: 768px) {
-          .layout-wrapper { padding: 32px 48px; }
+          .layout-wrapper { padding: 22px 38px; }
         }
         @media (min-width: 1024px) {
           .layout-wrapper {
             flex-direction: row;
-            padding: 40px 64px;
+            padding: 30px 54px;
             padding-bottom: 40px;
           }
         }
         @media (min-width: 1280px) {
-          .layout-wrapper { padding: 40px 80px; }
+          .layout-wrapper { padding: 25px 60px; }
         }
       `}</style>
 

@@ -1,19 +1,20 @@
 import { useRef, useEffect } from 'react';
 import { motion, type Variants } from 'framer-motion';
-import { Mail, MapPin, Phone, Github, Linkedin, Twitter, Download, Cake } from 'lucide-react';
+import { Mail, MapPin, Phone, Github, Linkedin, Download, MessageCircle } from 'lucide-react';
 import gsap from 'gsap';
+import { FaYoutube } from 'react-icons/fa6';
 
 const contactItems = [
   { icon: Mail, label: 'Email', value: 'varunthakral999@gmail.com', href: 'mailto:varunthakral999@gmail.com', truncate: true },
   { icon: MapPin, label: 'Location', value: 'Kurukshetra, HR', href: null, truncate: false },
   { icon: Phone, label: 'Phone', value: '+91 9588710931', href: null, truncate: false },
-  { icon: Cake, label: 'Birthday', value: '1 December, 2001', href: null, truncate: false },
+  { icon: MessageCircle, label: 'Status', value: 'Open to Work', href: null, truncate: false },
 ];
 
 const socialLinks = [
   { icon: Github, href: '#', hoverColor: '#fff', label: 'GitHub' },
   { icon: Linkedin, href: '#', hoverColor: '#0A66C2', label: 'LinkedIn' },
-  { icon: Twitter, href: '#', hoverColor: '#1DA1F2', label: 'Twitter' },
+  { icon: FaYoutube, href: '#', hoverColor: '#1DA1F2', label: 'Youtube' },
 ];
 
 const EASE = [0.23, 1, 0.32, 1] as [number, number, number, number];
@@ -46,7 +47,7 @@ const Sidebar = () => {
     <motion.aside
       initial={{ opacity: 0, x: -30 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] as [number,number,number,number] }}
+      transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] as [number, number, number, number] }}
       style={{
         position: 'sticky',
         top: '32px',
@@ -60,7 +61,7 @@ const Sidebar = () => {
           background: 'var(--bg-surface)',
           border: '1px solid var(--border)',
           borderRadius: '24px',
-          padding: '24px',
+          padding: '55px',
           display: 'flex',
           flexDirection: 'column',
           gap: '24px',
