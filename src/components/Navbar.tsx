@@ -17,6 +17,7 @@ const Navbar = () => {
   const lastScrollY = useRef(0);
   const [hidden, setHidden] = useState(false);
 
+  // GSAP scroll hide/show on desktop
   useEffect(() => {
     const handleScroll = () => {
       const currentY = window.scrollY;
@@ -31,6 +32,7 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Animate navbar hide/show
   useEffect(() => {
     if (!navRef.current) return;
     gsap.to(navRef.current, {
@@ -56,15 +58,15 @@ const Navbar = () => {
         zIndex: 50,
         display: 'flex',
         justifyContent: 'flex-end',
-        padding: '14px 22px',
-        background: 'rgba(250,250,249,0.80)',
-        backdropFilter: 'blur(24px)',
-        WebkitBackdropFilter: 'blur(24px)',
-        borderBottom: '1px solid rgba(0,0,0,0.06)',
-        borderRadius: '20px 20px 0 0',
+        padding: '16px 24px',
+        background: 'rgba(17,17,19,0.6)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
       }}
+      className="rounded-t-3xl"
     >
-      <ul style={{ display: 'flex', alignItems: 'center', gap: '4px', listStyle: 'none' }}>
+      <ul style={{ display: 'flex', alignItems: 'center', gap: '6px', listStyle: 'none' }}>
         {navItems.map((item) => {
           const isActive = item.path === activeItem.path;
           return (
@@ -74,23 +76,22 @@ const Navbar = () => {
                 style={{
                   position: 'relative',
                   display: 'inline-block',
-                  padding: '7px 15px',
+                  padding: '8px 16px',
                   fontSize: '13px',
                   fontWeight: isActive ? 600 : 500,
                   fontFamily: 'Inter, sans-serif',
-                  color: isActive ? '#8c52ff' : '#6b7280',
+                  color: isActive ? '#ffffff' : 'rgba(255,255,255,0.5)',
                   textDecoration: 'none',
                   borderRadius: '100px',
                   zIndex: 1,
-                  transition: 'color 0.2s ease',
+                  transition: 'color 0.25s ease',
                   letterSpacing: '0.01em',
-                  cursor: 'none',
                 }}
                 onMouseEnter={e => {
-                  if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = '#1a1a2e';
+                  if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.85)';
                 }}
                 onMouseLeave={e => {
-                  if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = '#6b7280';
+                  if (!isActive) (e.currentTarget as HTMLAnchorElement).style.color = 'rgba(255,255,255,0.5)';
                 }}
               >
                 {/* Sliding active pill */}
@@ -101,8 +102,8 @@ const Navbar = () => {
                       position: 'absolute',
                       inset: 0,
                       borderRadius: '100px',
-                      background: 'rgba(140,82,255,0.09)',
-                      border: '1.5px solid rgba(140,82,255,0.22)',
+                      background: 'rgba(140,82,255,0.15)',
+                      border: '1px solid rgba(140,82,255,0.3)',
                       zIndex: -1,
                     }}
                     transition={{ type: 'spring', stiffness: 380, damping: 32 }}

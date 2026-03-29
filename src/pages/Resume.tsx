@@ -8,11 +8,11 @@ gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
   { name: 'Unreal Engine 5', level: 90, color: '#8c52ff' },
-  { name: 'Blueprints Visual Script', level: 85, color: '#8c52ff' },
-  { name: 'Unity Engine', level: 75, color: '#007bff' },
-  { name: 'C++ / C#', level: 70, color: '#D4A017' },
-  { name: 'Cinematics & VFX', level: 80, color: '#e0416a' },
-  { name: 'Level Design', level: 78, color: '#16a34a' },
+  { name: 'Blueprints Visual Script', level: 85, color: '#9b6fff' },
+  { name: 'Unity Engine', level: 75, color: '#00d4ff' },
+  { name: 'C++ / C#', level: 70, color: '#FEDF9E' },
+  { name: 'Cinematics & VFX', level: 80, color: '#ff6b9d' },
+  { name: 'Level Design', level: 78, color: '#4ade80' },
 ];
 
 const education = [
@@ -29,7 +29,7 @@ const experience = [
     role: 'Gameplay Programmer',
     company: 'Indie Game Studio',
     period: '2023 – Present',
-    desc: "Developed core player controller mechanics and interactive dialogue systems. Managed physics-based puzzles using Unity Engine's rigidbodies and custom C# wrappers.",
+    desc: 'Developed core player controller mechanics and interactive dialogue systems. Managed physics-based puzzles using Unity Engine\'s rigidbodies and custom C# wrappers.',
     current: true,
   },
   {
@@ -64,14 +64,14 @@ const SkillBar = ({ name, level, color, index }: { name: string; level: number; 
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -18 }}
+      initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-20px' }}
       transition={{ delay: index * 0.08, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-      style={{ marginBottom: '20px' }}
+      style={{ marginBottom: '18px' }}
     >
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-        <span style={{ fontSize: '13px', fontWeight: 600, color: '#374151', fontFamily: 'Inter, sans-serif' }}>{name}</span>
+        <span style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text)', fontFamily: 'Inter, sans-serif' }}>{name}</span>
         <motion.span
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -86,9 +86,7 @@ const SkillBar = ({ name, level, color, index }: { name: string; level: number; 
         <div
           ref={barRef}
           className="skill-bar-fill"
-          style={{
-            background: `linear-gradient(90deg, ${color}, ${color}aa)`,
-          }}
+          style={{ background: `linear-gradient(90deg, ${color}, ${color}88)`, boxShadow: `0 0 12px ${color}60` }}
         />
       </div>
     </motion.div>
@@ -125,7 +123,7 @@ const TimelineItem = ({ title, subtitle, period, description, index, current }: 
 
   return (
     <motion.div
-      initial={{ opacity: 0, x: -24 }}
+      initial={{ opacity: 0, x: -28 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: '-20px' }}
       transition={{ delay: index * 0.15, duration: 0.55, ease: [0.23, 1, 0.32, 1] }}
@@ -139,9 +137,9 @@ const TimelineItem = ({ title, subtitle, period, description, index, current }: 
           top: '6px',
           width: '14px', height: '14px',
           borderRadius: '50%',
-          background: current ? '#8c52ff' : '#d1d5db',
-          border: `3px solid #FAFAF9`,
-          boxShadow: current ? '0 0 0 3px rgba(140,82,255,0.20), 0 0 12px rgba(140,82,255,0.25)' : '0 0 0 2px rgba(0,0,0,0.06)',
+          background: current ? 'var(--accent)' : '#444',
+          border: `3px solid var(--bg-surface)`,
+          boxShadow: current ? '0 0 0 3px rgba(140,82,255,0.3), 0 0 16px rgba(140,82,255,0.4)' : 'none',
           display: 'inline-block',
           zIndex: 1,
         }}
@@ -150,22 +148,22 @@ const TimelineItem = ({ title, subtitle, period, description, index, current }: 
         <span style={{
           position: 'absolute', left: '-48px', top: '-1px',
           width: '28px', height: '28px', borderRadius: '50%',
-          border: '1.5px solid rgba(140,82,255,0.25)',
+          border: '1px solid rgba(140,82,255,0.3)',
           animation: 'dot-ping 2.5s ease-out infinite',
           pointerEvents: 'none',
         }} />
       )}
-      <h3 style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#1a1a2e', marginBottom: '4px' }}>
+      <h3 style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#fff', marginBottom: '4px' }}>
         {title}
       </h3>
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '10px', flexWrap: 'wrap' }}>
-        <span style={{ fontSize: '11.5px', fontWeight: 600, color: '#8c52ff', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+        <span style={{ fontSize: '12px', fontWeight: 600, color: '#9a6fff', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
           {subtitle}
         </span>
-        <span style={{ fontSize: '11px', color: '#d1d5db' }}>•</span>
-        <span style={{ fontSize: '12px', color: '#9ca3af', fontWeight: 500 }}>{period}</span>
+        <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>•</span>
+        <span style={{ fontSize: '12px', color: 'var(--text-muted)', fontWeight: 500 }}>{period}</span>
       </div>
-      <p style={{ fontSize: '13.5px', color: '#6b7280', lineHeight: 1.8 }}>{description}</p>
+      <p style={{ fontSize: '13.5px', color: 'var(--text-subtle)', lineHeight: 1.75 }}>{description}</p>
     </motion.div>
   );
 };
@@ -179,21 +177,21 @@ const SectionHeader = ({ icon: Icon, title }: { icon: React.ElementType; title: 
     style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '28px' }}
   >
     <motion.div
-      whileInView={{ scale: [0.8, 1.12, 1] }}
+      whileInView={{ scale: [0.8, 1.15, 1] }}
       viewport={{ once: true }}
       transition={{ delay: 0.2, duration: 0.5 }}
       style={{
-        width: '40px', height: '40px', borderRadius: '12px',
-        background: 'rgba(140,82,255,0.09)',
-        border: '1px solid rgba(140,82,255,0.18)',
+        width: '42px', height: '42px', borderRadius: '12px',
+        background: 'rgba(140,82,255,0.1)',
+        border: '1px solid rgba(140,82,255,0.25)',
         display: 'flex', alignItems: 'center', justifyContent: 'center',
-        color: '#8c52ff',
+        color: '#9a6fff',
       }}
     >
-      <Icon size={19} />
+      <Icon size={20} />
     </motion.div>
     <div>
-      <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: '1.35rem', letterSpacing: '-0.02em', color: '#1a1a2e' }}>
+      <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: '1.4rem', letterSpacing: '-0.02em', color: '#fff' }}>
         {title}
       </h2>
       <span className="section-divider" style={{ marginBottom: 0, marginTop: '6px' }} />
@@ -215,7 +213,7 @@ const Resume = () => {
           ease: 'power3.out',
           scrollTrigger: {
             trigger: line,
-            start: 'top 82%',
+            start: 'top 80%',
             toggleActions: 'play none none reverse',
           },
         }
@@ -227,11 +225,11 @@ const Resume = () => {
 
   return (
     <div style={{ position: 'relative' }}>
-      {/* Decorative soft orb */}
+      {/* Decorative glow */}
       <div style={{
         position: 'absolute', top: '-60px', right: '-60px',
-        width: '280px', height: '280px',
-        background: 'radial-gradient(circle, rgba(0,123,255,0.05) 0%, transparent 70%)',
+        width: '300px', height: '300px',
+        background: 'radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%)',
         borderRadius: '50%', filter: 'blur(40px)', pointerEvents: 'none',
       }} />
 
@@ -249,41 +247,18 @@ const Resume = () => {
       {/* ── Skills ── */}
       <div style={{ marginBottom: '60px' }}>
         <SectionHeader icon={Code2} title="Skills" />
-        <div style={{
-          background: '#fff',
-          border: '1px solid rgba(0,0,0,0.07)',
-          borderRadius: '20px',
-          padding: '28px 28px 8px',
-          boxShadow: '0 2px 12px rgba(0,0,0,0.05)',
-        }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '0 40px' }}>
-            {skills.map((skill, i) => (
-              <SkillBar key={skill.name} {...skill} index={i} />
-            ))}
-          </div>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '0 40px' }}>
+          {skills.map((skill, i) => (
+            <SkillBar key={skill.name} {...skill} index={i} />
+          ))}
         </div>
       </div>
 
       {/* ── Education ── */}
       <div style={{ marginBottom: '60px' }}>
         <SectionHeader icon={BookOpen} title="Education" />
-        <div style={{
-          position: 'relative',
-          borderLeft: '1.5px solid rgba(0,0,0,0.09)',
-          marginLeft: '24px',
-          paddingLeft: '32px',
-          paddingTop: '4px',
-        }}>
-          <div
-            className="timeline-vertical-line"
-            style={{
-              position: 'absolute', left: '-1px', top: 0,
-              width: '2px',
-              background: 'linear-gradient(to bottom, #8c52ff, rgba(0,123,255,0.4), transparent)',
-              height: '100%',
-            }}
-            ref={timelineLineRef}
-          />
+        <div style={{ position: 'relative', borderLeft: '1px solid rgba(255,255,255,0.08)', marginLeft: '24px', paddingLeft: '32px', paddingTop: '4px' }}>
+          <div className="timeline-vertical-line" style={{ position: 'absolute', left: '-1px', top: 0, width: '1px', background: 'linear-gradient(to bottom, #8c52ff, transparent)', height: '100%' }} ref={timelineLineRef} />
           {education.map((edu, i) => (
             <TimelineItem
               key={i}
@@ -301,22 +276,8 @@ const Resume = () => {
       {/* ── Experience ── */}
       <div>
         <SectionHeader icon={Briefcase} title="Experience" />
-        <div style={{
-          position: 'relative',
-          borderLeft: '1.5px solid rgba(0,0,0,0.09)',
-          marginLeft: '24px',
-          paddingLeft: '32px',
-          paddingTop: '4px',
-        }}>
-          <div
-            className="timeline-vertical-line"
-            style={{
-              position: 'absolute', left: '-1px', top: 0,
-              width: '2px',
-              background: 'linear-gradient(to bottom, #8c52ff, #007bff, transparent)',
-              height: '100%',
-            }}
-          />
+        <div style={{ position: 'relative', borderLeft: '1px solid rgba(255,255,255,0.08)', marginLeft: '24px', paddingLeft: '32px', paddingTop: '4px' }}>
+          <div className="timeline-vertical-line" style={{ position: 'absolute', left: '-1px', top: 0, width: '1px', background: 'linear-gradient(to bottom, #8c52ff, rgba(0,212,255,0.3), transparent)', height: '100%' }} />
           <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
             {experience.map((exp, i) => (
               <TimelineItem

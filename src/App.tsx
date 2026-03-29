@@ -8,7 +8,7 @@ import Contact from "./pages/Contact"
 
 const App = () => {
   return (
-    <div style={{ minHeight: '100vh', background: 'var(--bg)' }}>
+    <div style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--text)' }}>
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

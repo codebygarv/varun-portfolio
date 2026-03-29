@@ -35,7 +35,7 @@ const Layout = () => {
 
   return (
     <>
-      {/* Subtle noise texture for tactile depth */}
+      {/* Noise texture overlay for depth */}
       <div className="noise-overlay" />
 
       {/* Loading screen */}
@@ -50,34 +50,31 @@ const Layout = () => {
           flex-direction: column;
           min-height: 100vh;
           padding: 16px;
-          gap: 20px;
+          gap: 24px;
           width: 100%;
-          max-width: 1440px;
+          max-width: 1450px;
           margin: 0 auto;
           align-items: flex-start;
-          padding-bottom: 80px;
+          padding-bottom: 96px;
         }
         @media (min-width: 768px) {
-          .layout-wrapper {
-            padding: 28px 30px;
-            padding-bottom: 80px;
-          }
+          .layout-wrapper { padding: 32px 48px; }
         }
         @media (min-width: 1024px) {
           .layout-wrapper {
             flex-direction: row;
-            padding: 26px 36px;
-            padding-bottom: 36px;
+            padding: 40px 64px;
+            padding-bottom: 40px;
           }
         }
         @media (min-width: 1280px) {
-          .layout-wrapper { padding: 30px 52px; }
+          .layout-wrapper { padding: 40px 80px; }
         }
       `}</style>
 
       <div
         className="layout-wrapper"
-        style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.55s ease 0.1s' }}
+        style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease 0.1s' }}
       >
         <Sidebar />
         <div
@@ -86,17 +83,16 @@ const Layout = () => {
             flexDirection: 'column',
             flex: 1,
             width: '100%',
-            background: '#FAFAF9',
-            border: '1px solid rgba(0,0,0,0.07)',
+            background: 'var(--bg-surface)',
+            border: '1px solid var(--border)',
             borderRadius: '24px',
             position: 'relative',
             overflow: 'hidden',
             minHeight: '80vh',
-            boxShadow: '0 2px 16px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.04)',
           }}
         >
           <Navbar />
-          <div className="layout-content-inner" style={{ flex: 1, paddingBottom: '48px' }}>
+          <div style={{ padding: '24px', flex: 1 }} className="md:p-10 lg:p-12 pb-28 lg:pb-12">
             <PageTransition>
               <Outlet />
             </PageTransition>
@@ -105,6 +101,7 @@ const Layout = () => {
       </div>
     </>
   );
+
 };
 
 export default Layout;
