@@ -59,6 +59,7 @@ const Layout = () => {
         }
         @media (min-width: 768px) {
           .layout-wrapper { padding: 22px 38px; }
+          .layout-wrapper .sidebar { width: 100%; }
         }
         @media (min-width: 1024px) {
           .layout-wrapper {
@@ -76,7 +77,9 @@ const Layout = () => {
         className="layout-wrapper"
         style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease 0.1s' }}
       >
-        <Sidebar />
+        <div className='w-full lg:max-w-[320px]'>
+          <Sidebar />
+        </div>
         <div
           style={{
             display: 'flex',

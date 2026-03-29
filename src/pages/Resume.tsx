@@ -7,13 +7,14 @@ import { BookOpen, Briefcase, Code2 } from 'lucide-react';
 gsap.registerPlugin(ScrollTrigger);
 
 const skills = [
-  { name: 'Unreal Engine 5', level: 90, color: '#8c52ff' },
-  { name: 'Blueprints Visual Script', level: 85, color: '#9b6fff' },
-  { name: 'Unity Engine', level: 75, color: '#00d4ff' },
-  { name: 'C++ / C#', level: 70, color: '#FEDF9E' },
-  { name: 'Cinematics & VFX', level: 80, color: '#ff6b9d' },
-  { name: 'Level Design', level: 78, color: '#4ade80' },
+  { name: 'Unreal Engine 5', level: 95, color: '#8c52ff' },
+  { name: 'Gameplay Programming', level: 92, color: '#00d4ff' },
+  { name: 'Level Design', level: 88, color: '#FEDF9E' },
+  { name: 'Performance Optimization', level: 85, color: '#4ade80' },
+  { name: 'UI/UX Implementation', level: 82, color: '#ff6b9d' },
+  { name: 'Systems Architecture', level: 80, color: '#8c52ff' },
 ];
+
 
 const education = [
   {

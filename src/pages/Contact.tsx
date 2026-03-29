@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mail, MapPin, Github, Linkedin, CheckCircle, Loader } from 'lucide-react';
 import gsap from 'gsap';
+import { portfolioContent } from '../constants/content';
+
 
 type Status = 'idle' | 'sending' | 'sent';
 
@@ -163,11 +165,12 @@ const Contact = () => {
   }, []);
 
   const quickContacts = [
-    { icon: Mail, label: 'Email', value: 'varunthakral999@gmail.com', href: 'mailto:varunthakral999@gmail.com' },
-    { icon: MapPin, label: 'Location', value: 'Kurukshetra, Haryana', href: null },
-    { icon: Github, label: 'GitHub', value: 'github.com/varun', href: '#' },
-    { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/varun', href: '#' },
+    { icon: Mail, label: 'Email', value: portfolioContent.contact.email, href: `mailto:${portfolioContent.contact.email}` },
+    { icon: MapPin, label: 'Location', value: portfolioContent.contact.location, href: null },
+    { icon: Github, label: 'GitHub', value: 'github.com/varun', href: portfolioContent.socials.github },
+    { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/varun', href: portfolioContent.socials.linkedin },
   ];
+
 
   return (
     <div style={{ position: 'relative' }}>
@@ -302,11 +305,12 @@ const Contact = () => {
             marginBottom: '8px',
           }}>
             <h3 style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: '1rem', color: '#fff', marginBottom: '6px' }}>
-              Open for Opportunities
+              {portfolioContent.microcopy.letsConnect}
             </h3>
             <p style={{ fontSize: '13px', color: 'var(--text-subtle)', lineHeight: 1.7 }}>
-              Currently available for freelance game dev projects, full-time roles, and exciting collaborations in game development and interactive media.
+              Currently available for freelance technical consulting, senior game development roles, and high-impact project collaborations.
             </p>
+
           </div>
 
           {quickContacts.map(({ icon: Icon, label, value, href }, i) => (

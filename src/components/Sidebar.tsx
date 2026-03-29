@@ -4,18 +4,21 @@ import { Mail, MapPin, Phone, Github, Linkedin, Download, MessageCircle } from '
 import gsap from 'gsap';
 import { FaYoutube } from 'react-icons/fa6';
 
+import { portfolioContent } from '../constants/content';
+
 const contactItems = [
-  { icon: Mail, label: 'Email', value: 'varunthakral999@gmail.com', href: 'mailto:varunthakral999@gmail.com', truncate: true },
-  { icon: MapPin, label: 'Location', value: 'Kurukshetra, HR', href: null, truncate: false },
-  { icon: Phone, label: 'Phone', value: '+91 9588710931', href: null, truncate: false },
-  { icon: MessageCircle, label: 'Status', value: 'Open to Work', href: null, truncate: false },
+  { icon: Mail, label: 'Email', value: portfolioContent.contact.email, href: `mailto:${portfolioContent.contact.email}`, truncate: true },
+  { icon: MapPin, label: 'Location', value: portfolioContent.contact.location, href: null, truncate: false },
+  { icon: Phone, label: 'Phone', value: portfolioContent.contact.phone, href: null, truncate: false },
+  { icon: MessageCircle, label: 'Status', value: 'Open to Collaboration', href: null, truncate: false },
 ];
 
 const socialLinks = [
-  { icon: Github, href: '#', hoverColor: '#fff', label: 'GitHub' },
-  { icon: Linkedin, href: '#', hoverColor: '#0A66C2', label: 'LinkedIn' },
-  { icon: FaYoutube, href: '#', hoverColor: '#1DA1F2', label: 'Youtube' },
+  { icon: Github, href: portfolioContent.socials.github, hoverColor: '#fff', label: 'GitHub' },
+  { icon: Linkedin, href: portfolioContent.socials.linkedin, hoverColor: '#0A66C2', label: 'LinkedIn' },
+  { icon: FaYoutube, href: portfolioContent.socials.youtube, hoverColor: '#FF0000', label: 'Youtube' },
 ];
+
 
 const EASE = [0.23, 1, 0.32, 1] as [number, number, number, number];
 
@@ -53,15 +56,18 @@ const Sidebar = () => {
         top: '32px',
         flexShrink: 0,
         width: '100%',
-        maxWidth: '320px',
       }}
+      className='md:w-full lg:max-w-[320px]'
     >
       <div
         style={{
           background: 'var(--bg-surface)',
           border: '1px solid var(--border)',
           borderRadius: '24px',
-          padding: '55px',
+          paddingTop: '55px',
+          paddingBottom: '55px',
+          paddingLeft: '35px',
+          paddingRight: '35px',
           display: 'flex',
           flexDirection: 'column',
           gap: '24px',
@@ -69,8 +75,8 @@ const Sidebar = () => {
         }}
       >
         {/* Top — Avatar + Name + Role */}
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px', paddingBottom: '20px', borderBottom: '1px solid var(--border)' }}
-          className="flex flex-row md:flex-col lg:flex-col items-center md:items-center"
+        <div
+          className="flex  gap-5 flex-row lg:flex-col lg:justify-center items-center md:items-center"
         >
           {/* Avatar */}
           <div
@@ -117,7 +123,7 @@ const Sidebar = () => {
           </div>
 
           <div style={{ textAlign: 'center' }} className="text-left md:text-center lg:text-center">
-            <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.25rem', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em' }}>
+            <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.25rem', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', textAlign: 'left', textWrap: 'balance' }}>
               Varun
             </div>
             <div style={{
@@ -143,7 +149,7 @@ const Sidebar = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="hidden md:flex lg:flex flex-col gap-4"
+          className="hidden lg:flex flex-col gap-4"
         >
           {contactItems.map(({ icon: Icon, label, value, href, truncate }) => (
             <motion.div key={label} variants={itemVariants} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -178,7 +184,7 @@ const Sidebar = () => {
         </motion.div>
 
         {/* Download Resume */}
-        <div className="hidden md:block lg:block">
+        <div className="md:block lg:block">
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
@@ -203,9 +209,10 @@ const Sidebar = () => {
             }}
             onMouseEnter={e => ((e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 30px rgba(140,82,255,0.25)')}
             onMouseLeave={e => ((e.currentTarget as HTMLButtonElement).style.boxShadow = '0 4px 20px rgba(140,82,255,0.1)')}
+            onClick={() => window.open('/Varun_Resume.pdf', '_blank')}
           >
             <Download size={14} />
-            Download Resume
+            {portfolioContent.microcopy.downloadResume}
           </motion.button>
         </div>
 

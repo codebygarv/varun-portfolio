@@ -2,8 +2,11 @@ import { useEffect, useRef } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SiUnrealengine, SiUnity } from 'react-icons/si';
-import { Gamepad2, Film } from 'lucide-react';
+import { SiUnrealengine } from 'react-icons/si';
+import { Film, Search, Target, Layout, Cpu } from 'lucide-react';
+import { portfolioContent } from '../constants/content';
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -11,45 +14,43 @@ const whatIDo = [
   {
     icon: SiUnrealengine,
     title: 'Unreal Engine 5',
-    desc: 'Skilled in UE5 for creating games and cinematics, proficient with Blueprints for game logic, Lumen lighting, and Nanite geometry.',
+    desc: 'Expertise in architecting complex systems using Blueprints and C++, with a sharp focus on performance optimization and visual fidelity.',
     color: '#8c52ff',
   },
   {
-    icon: SiUnity,
-    title: 'Unity Engine',
-    desc: 'Experienced in developing 2D and 3D games, utilizing C# for scripting and creating engaging gameplay mechanics with performance optimization.',
+    icon: Target,
+    title: 'Gameplay Programming',
+    desc: 'Developing robust mechanics, interactive systems, and physics-based interactions that define the core player experience.',
     color: '#00d4ff',
   },
   {
-    icon: Gamepad2,
-    title: 'Gameplay Programming',
-    desc: 'Building core player controllers, physics-based puzzles, AI systems, and interactive dialogue trees from the ground up.',
+    icon: Layout,
+    title: 'Level Design',
+    desc: 'Crafting immersive environments with a focus on narrative flow, player pacing, and environmental storytelling.',
     color: '#FEDF9E',
   },
   {
     icon: Film,
     title: 'Cinematics & Video',
-    desc: 'Creating cinematic sequences and editing videos to enhance storytelling. Blending technical expertise with creative vision.',
+    desc: 'Creating cinematic sequences and high-end video breakdowns to showcase technical and creative milestones.',
     color: '#ff6b9d',
+  },
+  {
+    icon: Search,
+    title: 'Optimization',
+    desc: 'Solving technical bottlenecks and profiling performance to ensure seamless gameplay across diverse hardware.',
+    color: '#4ade80',
+  },
+  {
+    icon: Cpu,
+    title: 'Systems Architecture',
+    desc: 'Building scalable and maintainable codebases for game engines, ensuring long-term project stability.',
+    color: '#8c52ff',
   },
 ];
 
-const experiences = [
-  {
-    role: 'Gameplay Programmer',
-    company: 'Indie Game Studio',
-    period: '2023 – Present',
-    desc: 'Developed core player controller mechanics and interactive dialogue systems. Managed physics-based puzzles using Unity Engine\'s rigidbodies and custom C# wrappers. Optimized game performance by implementing object pooling, significantly reducing stutters.',
-    current: true,
-  },
-  {
-    role: 'Level Designer Intern',
-    company: 'Creative Arts Agency',
-    period: '2021 – 2023',
-    desc: 'Assisted in prototyping level designs using Unreal Engine 5. Created blockouts and tested flow, rhythm, and pacing of immersive narrative maps. Integrated audio cues and cinematic visual effects.',
-    current: false,
-  },
-];
+
+const experiences = portfolioContent.experience;
 
 // Floating particle component
 const Particle = ({ style }: { style: React.CSSProperties }) => (
@@ -163,15 +164,15 @@ const Home = () => {
             animate="visible"
             style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '720px' }}
           >
-            <motion.p variants={itemVariants} style={{ color: 'var(--text)', fontSize: '16px', fontWeight: 500, lineHeight: 1.7 }}>
-              Hi! I'm <span className="gradient-text-accent" style={{ fontWeight: 700 }}>Varun</span>. I make Video Games.
+            <motion.p variants={itemVariants} style={{ color: 'var(--text)', fontSize: '1.25rem', fontWeight: 700, lineHeight: 1.4, marginBottom: '8px' }}>
+              {portfolioContent.about.hero.tagline}
             </motion.p>
-            <motion.p variants={itemVariants} style={{ color: 'var(--text-subtle)', lineHeight: 1.8 }}>
-              I'm an Unreal Engine Developer from Kurukshetra, Haryana. I recently graduated with a bachelor's degree in Game Design and Development. I find great joy in crafting unforgettable experiences that come alive through the computer screen.
-            </motion.p>
-            <motion.p variants={itemVariants} style={{ color: 'var(--text-subtle)', lineHeight: 1.8 }}>
-              My role involves not only developing games but also creating cinematic sequences and editing videos to enhance storytelling. I strive to blend technical expertise with creative vision, aiming to create games that are both engaging and visually stunning.
-            </motion.p>
+            {portfolioContent.about.long.split('\n\n').map((para, idx) => (
+              <motion.p key={idx} variants={itemVariants} style={{ color: 'var(--text-subtle)', lineHeight: 1.8, marginBottom: '16px', textAlign: 'justify' }}>
+                {para}
+              </motion.p>
+            ))}
+
           </motion.div>
         </div>
 
