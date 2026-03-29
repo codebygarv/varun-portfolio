@@ -8,18 +8,18 @@ import Contact from "./pages/Contact"
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-black/90 text-white">
-      <Routes> 
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="resume" element={<Resume />} />
-        <Route path="portfolio" element={<Portfolio />} />
-        <Route path="blog" element={<Blog />} />
-        <Route path="contact" element={<Contact />} />
-      </Route>
-    </Routes>
+    <div style={{ minHeight: '100vh', background: 'var(--bg)', color: 'var(--text)' }}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="resume" element={<Resume />} />
+          <Route path="portfolio" element={<Portfolio />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="contact" element={<Contact />} />
+        </Route>
+      </Routes>
     </div>
   )
 }
 
-export default App  
+export default App

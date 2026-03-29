@@ -1,19 +1,107 @@
-import { Outlet } from "react-router-dom"
-import Navbar from "../components/Navbar"
-import Sidebar from "../components/Sidebar"
+import { useEffect, useState } from 'react';
+import { Outlet } from 'react-router-dom';
+import Lenis from 'lenis';
+import Navbar from '../components/Navbar';
+import Sidebar from '../components/Sidebar';
+import PageTransition from '../components/PageTransition';
+import LoadingScreen from '../components/LoadingScreen';
+import CustomCursor from '../components/CustomCursor';
 
 const Layout = () => {
-    return (
-        <div className="flex flex-col lg:flex-row min-h-screen px-4 py-4 md:px-12 md:py-8 lg:px-16 lg:py-10 xl:px-20 gap-6 w-full max-w-[1450px] mx-auto items-start pb-24 lg:pb-10">
-            <Sidebar />
-            <div className="flex flex-col flex-1 w-full bg-[#1E1E1F] border border-white/10 rounded-3xl relative overflow-hidden min-h-[80vh]">
-                <Navbar />
-                <div className="p-6 md:p-10 lg:p-12 pb-28 lg:pb-12 text-white">
-                    <Outlet />
-                </div>
-            </div>
-        </div>
-    )
-}
+  const [isLoading, setIsLoading] = useState(true);
 
-export default Layout
+  useEffect(() => {
+    // Lenis smooth scroll
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    const raf = (time: number) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+    requestAnimationFrame(raf);
+
+    // Loading screen timer
+    const timer = setTimeout(() => setIsLoading(false), 2200);
+
+    return () => {
+      lenis.destroy();
+      clearTimeout(timer);
+    };
+  }, []);
+
+  return (
+    <>
+      {/* Noise texture overlay for depth */}
+      <div className="noise-overlay" />
+
+      {/* Loading screen */}
+      <LoadingScreen isLoading={isLoading} />
+
+      {/* Custom cursor */}
+      <CustomCursor />
+
+      <style>{`
+        .layout-wrapper {
+          display: flex;
+          flex-direction: column;
+          min-height: 100vh;
+          padding: 16px;
+          gap: 24px;
+          width: 100%;
+          max-width: 1450px;
+          margin: 0 auto;
+          align-items: flex-start;
+          padding-bottom: 96px;
+        }
+        @media (min-width: 768px) {
+          .layout-wrapper { padding: 32px 48px; }
+        }
+        @media (min-width: 1024px) {
+          .layout-wrapper {
+            flex-direction: row;
+            padding: 40px 64px;
+            padding-bottom: 40px;
+          }
+        }
+        @media (min-width: 1280px) {
+          .layout-wrapper { padding: 40px 80px; }
+        }
+      `}</style>
+
+      <div
+        className="layout-wrapper"
+        style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease 0.1s' }}
+      >
+        <Sidebar />
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            flex: 1,
+            width: '100%',
+            background: 'var(--bg-surface)',
+            border: '1px solid var(--border)',
+            borderRadius: '24px',
+            position: 'relative',
+            overflow: 'hidden',
+            minHeight: '80vh',
+          }}
+        >
+          <Navbar />
+          <div style={{ padding: '24px', flex: 1 }} className="md:p-10 lg:p-12 pb-28 lg:pb-12">
+            <PageTransition>
+              <Outlet />
+            </PageTransition>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+
+};
+
+export default Layout;
