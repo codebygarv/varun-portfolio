@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { BookOpen, Briefcase, Code2 } from 'lucide-react';
+import { portfolioContent } from '../constants/content';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,31 +17,9 @@ const skills = [
 ];
 
 
-const education = [
-  {
-    degree: 'Game Design and Development',
-    institution: 'Indore University',
-    period: '2019 – 2023',
-    desc: "Bachelor's degree focusing on core gameplay systems, interactive narrative, and engine architecture. Participated in multiple game jams, leading the programming efforts using Unreal Engine and C++.",
-  },
-];
+const education = portfolioContent.education
 
-const experience = [
-  {
-    role: 'Gameplay Programmer',
-    company: 'Indie Game Studio',
-    period: '2023 – Present',
-    desc: 'Developed core player controller mechanics and interactive dialogue systems. Managed physics-based puzzles using Unity Engine\'s rigidbodies and custom C# wrappers.',
-    current: true,
-  },
-  {
-    role: 'Level Designer Intern',
-    company: 'Creative Arts Agency',
-    period: '2021 – 2023',
-    desc: 'Assisted in prototyping level designs using Unreal Engine 5. Created blockouts and tested flow, rhythm, and pacing of immersive narrative maps.',
-    current: false,
-  },
-];
+const experience = portfolioContent.experience;
 
 const SkillBar = ({ name, level, color, index }: { name: string; level: number; color: string; index: number }) => {
   const barRef = useRef<HTMLDivElement>(null);

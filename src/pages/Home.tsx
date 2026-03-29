@@ -2,11 +2,9 @@ import { useEffect, useRef } from 'react';
 import { motion, type Variants } from 'framer-motion';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { SiUnrealengine } from 'react-icons/si';
-import { Film, Search, Target, Layout, Cpu } from 'lucide-react';
+import { Film, Target, Layout, Cpu, Monitor, Bug, Box, GitBranch } from 'lucide-react';
 import { portfolioContent } from '../constants/content';
-
-
+import { SiUnrealengine } from 'react-icons/si';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,42 +13,59 @@ const whatIDo = [
     icon: SiUnrealengine,
     title: 'Unreal Engine 5',
     desc: 'Expertise in architecting complex systems using Blueprints and C++, with a sharp focus on performance optimization and visual fidelity.',
-    color: '#8c52ff',
-  },
-  {
-    icon: Target,
-    title: 'Gameplay Programming',
-    desc: 'Developing robust mechanics, interactive systems, and physics-based interactions that define the core player experience.',
     color: '#00d4ff',
   },
   {
     icon: Layout,
     title: 'Level Design',
-    desc: 'Crafting immersive environments with a focus on narrative flow, player pacing, and environmental storytelling.',
+    desc: 'Designing immersive environments with strong focus on player flow, pacing, and storytelling.',
     color: '#FEDF9E',
   },
   {
-    icon: Film,
-    title: 'Cinematics & Video',
-    desc: 'Creating cinematic sequences and high-end video breakdowns to showcase technical and creative milestones.',
-    color: '#ff6b9d',
+    icon: Target,
+    title: 'Gameplay Programming',
+    desc: 'Developing core gameplay systems, mechanics, and interactive player experiences.',
+    color: '#00d4ff',
   },
   {
-    icon: Search,
-    title: 'Optimization',
-    desc: 'Solving technical bottlenecks and profiling performance to ensure seamless gameplay across diverse hardware.',
+    icon: Monitor,
+    title: 'UI/UX Implementation',
+    desc: 'Building intuitive, responsive, and visually engaging user interfaces for games.',
     color: '#4ade80',
   },
   {
+    icon: Bug,
+    title: 'Debugging & Optimization',
+    desc: 'Fixing bugs, profiling performance, and optimizing systems for smooth gameplay.',
+    color: '#ff6b6b',
+  },
+  {
+    icon: Box,
+    title: 'Blueprints (Unreal Visual Scripting)',
+    desc: 'Using Unreal Engine Blueprints to prototype and build scalable gameplay systems.',
+    color: '#3b82f6',
+  },
+  {
+    icon: GitBranch,
+    title: 'Source Control (Git, Perforce, SVN)',
+    desc: 'Managing projects efficiently using version control for collaboration and stability.',
+    color: '#f97316',
+  },
+  {
     icon: Cpu,
-    title: 'Systems Architecture',
-    desc: 'Building scalable and maintainable codebases for game engines, ensuring long-term project stability.',
-    color: '#8c52ff',
+    title: 'Physics & Mechanics',
+    desc: 'Implementing realistic physics systems and advanced gameplay mechanics.',
+    color: '#22c55e',
+  },
+  {
+    icon: Film,
+    title: 'Cinematics & Videos',
+    desc: 'Creating cinematic sequences and visual showcases to enhance storytelling.',
+    color: '#ff6b9d',
   },
 ];
 
 
-const experiences = portfolioContent.experience;
 
 // Floating particle component
 const Particle = ({ style }: { style: React.CSSProperties }) => (
@@ -162,7 +177,7 @@ const Home = () => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
-            style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '720px' }}
+            style={{ display: 'flex', flexDirection: 'column', gap: '16px', maxWidth: '920px' }}
           >
             <motion.p variants={itemVariants} style={{ color: 'var(--text)', fontSize: '1.25rem', fontWeight: 700, lineHeight: 1.4, marginBottom: '8px' }}>
               {portfolioContent.about.hero.tagline}
@@ -177,7 +192,7 @@ const Home = () => {
         </div>
 
         {/* ── What I'm Doing ── */}
-        <div style={{ marginBottom: '64px' }}>
+        <div >
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -244,61 +259,6 @@ const Home = () => {
                 </motion.div>
               );
             })}
-          </div>
-        </div>
-
-        {/* ── Experience ── */}
-        <div ref={experienceRef}>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.5rem', fontWeight: 700, letterSpacing: '-0.02em', color: '#fff', marginBottom: '4px' }}>
-              Experience
-            </h2>
-            <span className="section-divider" />
-          </motion.div>
-
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-            {experiences.map((exp, i) => (
-              <div key={i} className="exp-card card" style={{ padding: '24px', position: 'relative', overflow: 'hidden' }}>
-                {exp.current && (
-                  <div style={{
-                    position: 'absolute', top: '20px', right: '20px',
-                    display: 'flex', alignItems: 'center', gap: '6px',
-                    padding: '4px 10px',
-                    borderRadius: '99px',
-                    background: 'rgba(140,82,255,0.12)',
-                    border: '1px solid rgba(140,82,255,0.25)',
-                    fontSize: '11px', fontWeight: 600, color: '#9a6fff',
-                    letterSpacing: '0.04em',
-                  }}>
-                    <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#8c52ff', display: 'inline-block', animation: 'pulse-glow 2s ease-in-out infinite' }} />
-                    Active
-                  </div>
-                )}
-
-                {/* Gradient accent line */}
-                <div style={{
-                  position: 'absolute', top: 0, left: 0, right: 0, height: '2px',
-                  background: exp.current
-                    ? 'linear-gradient(90deg, #8c52ff, #00d4ff)'
-                    : 'linear-gradient(90deg, rgba(255,255,255,0.1), transparent)',
-                }} />
-
-                <h3 style={{ fontFamily: 'Space Grotesk, sans-serif', fontWeight: 700, fontSize: '1.1rem', color: '#fff', marginBottom: '4px' }}>
-                  {exp.role}
-                </h3>
-                <span style={{ fontSize: '12px', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#9a6fff' }}>
-                  {exp.company} · {exp.period}
-                </span>
-                <p style={{ marginTop: '12px', fontSize: '14px', color: 'var(--text-subtle)', lineHeight: 1.75 }}>
-                  {exp.desc}
-                </p>
-              </div>
-            ))}
           </div>
         </div>
       </div>
