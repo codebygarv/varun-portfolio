@@ -23,17 +23,18 @@ export const portfolioContent = {
   ],
   education: [
     {
-      degree: 'Bachelor of Technology in Computer Science',
-      institution: 'Indore University',
-      period: '2019 – 2024',
-      desc: "Bachelor's degree focusing on core gameplay systems, interactive narrative, and engine architecture. Participated in multiple game jams, leading the programming efforts using Unreal Engine and C++.",
-    },
-    {
       degree: 'Master of Technology in Computer Science',
-      institution: 'Indore University',
+      institution: 'Kurukshetra University',
       period: '2024 – 2026',
       desc: "Master's degree focusing on core gameplay systems, interactive narrative, and engine architecture. Participated in multiple game jams, leading the programming efforts using Unreal Engine and C++.",
     },
+    {
+      degree: 'Bachelor of Technology in Computer Science',
+      institution: 'Kurukshetra University',
+      period: '2019 – 2024',
+      desc: "Bachelor's degree focusing on core gameplay systems, interactive narrative, and engine architecture. Participated in multiple game jams, leading the programming efforts using Unreal Engine and C++.",
+    }
+
   ],
   skills: [
     {

@@ -1,0 +1,4 @@
+- sidebar up going make static 
+- portfolio education content change
+- skills same as what i am doing 
+- Varun name in sidebar in large screen make it center 
