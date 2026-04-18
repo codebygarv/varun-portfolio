@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { portfolioContent } from '../constants/content';
-import { ArrowLeft, ExternalLink, Calendar, Briefcase, Monitor, Server, Cpu } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Calendar, Briefcase, Monitor, Cpu } from 'lucide-react';
 import { useEffect } from 'react';
 
 const ProjectDetails = () => {

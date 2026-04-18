@@ -146,7 +146,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('All');
-  const navigate = useNavigate();
 
   const filtered = activeFilter === 'All'
     ? portfolioContent.projects
