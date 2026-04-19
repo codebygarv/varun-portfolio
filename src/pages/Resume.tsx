@@ -7,14 +7,13 @@ import { portfolioContent } from '../constants/content';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const skills = [
-  { name: 'Unreal Engine 5', level: 95, color: '#8c52ff' },
-  { name: 'Gameplay Programming', level: 92, color: '#00d4ff' },
-  { name: 'Level Design', level: 88, color: '#FEDF9E' },
-  { name: 'Performance Optimization', level: 85, color: '#4ade80' },
-  { name: 'UI/UX Implementation', level: 82, color: '#ff6b9d' },
-  { name: 'Systems Architecture', level: 80, color: '#8c52ff' },
-];
+const skills = portfolioContent.skills.flatMap(category => 
+  category.items.map(item => ({
+    name: item.name,
+    level: item.level,
+    color: item.color
+  }))
+);
 
 
 const education = portfolioContent.education

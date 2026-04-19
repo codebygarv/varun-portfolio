@@ -40,17 +40,17 @@ export const portfolioContent = {
     {
       category: "Game Engineering",
       items: [
-        { name: "Unreal Engine 5", focus: "Blueprints & Optimization", color: "#8c52ff" },
-        { name: "Gameplay Programming", focus: "Mechanics & Systems", color: "#00d4ff" },
-        { name: "Physics & Mechanics", focus: "Interaction Design", color: "#FEDF9E" },
+        { name: "Unreal Engine 5", focus: "Blueprints & Optimization", level: 95, color: "#8c52ff" },
+        { name: "Gameplay Programming", focus: "Mechanics & Systems", level: 92, color: "#00d4ff" },
+        { name: "Physics & Mechanics", focus: "Interaction Design", level: 88, color: "#FEDF9E" },
       ]
     },
     {
       category: "Technical & Design",
       items: [
-        { name: "Level Design", focus: "Environment & Flow", color: "#4ade80" },
-        { name: "UI/UX Implementation", focus: "Interfaces & HUDs", color: "#ff6b9d" },
-        { name: "Debugging & Optimization", focus: "Performance Tuning", color: "#8c52ff" },
+        { name: "Level Design", focus: "Environment & Flow", level: 85, color: "#4ade80" },
+        { name: "UI/UX Implementation", focus: "Interfaces & HUDs", level: 82, color: "#ff6b9d" },
+        { name: "Debugging & Optimization", focus: "Performance Tuning", level: 90, color: "#8c52ff" },
       ]
     },
   ],
@@ -136,8 +136,8 @@ export const portfolioContent = {
       platforms: ["PC", "Steam", "Playstation5", "Xbox"],
       responsibility: "Player setup, gameplay, AI, UI, Asset management, Game Mechanics, optimization, Code integration, debugging, Profiling.",
       link: "https://store.steampowered.com/app/3872430/SCP_Project_Pneuma/",
-      image: "https://images.unsplash.com/photo-1509198397868-475647b2a1e5?q=80&w=2147&auto=format&fit=crop",
-      bgCover: "https://drive.google.com/file/d/1nzYDJ-gTSIDUMSjN0YeC8Alx0hcEE73Q/view?usp=sharing",
+      image: "https://i.ibb.co/tP1dhmqT/Screenshot-2026-01-11-224917.png",
+      bgCover: "https://i.ibb.co/tP1dhmqT/Screenshot-2026-01-11-224917.png",
       description: "A cinematic single-player psychological survival horror game built in Unreal Engine, featuring narrative-driven exploration, stealth-based survival, and encounters with adaptive SCP entities.",
       technicalContributions: [
         {
@@ -222,8 +222,8 @@ export const portfolioContent = {
       platforms: ["Android", "PC"],
       responsibility: "Player setup, gameplay, AI, UI, Game Mechanics, Code integration, API Integration, Level Design, Optimization, Ad mob Integration.",
       link: "https://play.google.com/store/apps/details?id=com.Zombie.hunter.DeathRush",
-      image: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?q=80&w=2070&auto=format&fit=crop",
-      bgCover: "https://drive.google.com/file/d/12ouREzYsw7hXzE1TG_JVF7uVzcn5kSwW/view?usp=sharing",
+      image: "https://i.ibb.co/DmTRvVS/Highres-Screenshot00002.png",
+      bgCover: "https://i.ibb.co/DmTRvVS/Highres-Screenshot00002.png",
       description: "A mobile Third-person zombie survival shooter featuring wave-based combat, progression systems, and AdMob monetization.",
       technicalContributions: [
         {
@@ -259,9 +259,9 @@ export const portfolioContent = {
       duration: "Prototype",
       platforms: ["PC"],
       responsibility: "Player setup, gameplay, AI, UI, Level Design, Optimization.",
-      link: "https://drive.google.com/file/d/1A1KkLMBqw63pxwjGky4hh2rzJJDUrxC-/view",
-      image: "https://images.unsplash.com/photo-1614850523296-d8c1af93d400?q=80&w=2070&auto=format&fit=crop",
-      bgCover: "https://drive.google.com/file/d/1Rehx8Xx8EsHJdWdfHAjUWEPRVPBc92_D/view?usp=sharing",
+      link: "https://drive.google.com/file/d/1OfP5nymQftKVIMtFZfLlnZ0-bbBERjf4/view",
+      image: "https://i.ibb.co/834JgLc/Cover-Page-Metaverse.png",
+      bgCover: "https://i.ibb.co/834JgLc/Cover-Page-Metaverse.png",
       description: "Developed interactive metaverse environments for educational and cultural purposes, featuring NPC interactions and HUD interfaces.",
       technicalContributions: [
         {
@@ -285,8 +285,8 @@ export const portfolioContent = {
       platforms: ["PC"],
       responsibility: "Player setup, Texture Inventory, UI, Runtime Material switch.",
       link: "https://www.youtube.com/watch?v=P6OmDA0Qa2c",
-      image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop",
-      bgCover: "https://drive.google.com/file/d/1SDxG60AyIwJSf-8Jg2Tuor9Wa0QnV5XG/view?usp=sharing",
+      image: "https://i.ibb.co/QFC9gNH9/Screenshot-2026-01-11-225344.png",
+      bgCover: "https://i.ibb.co/QFC9gNH9/Screenshot-2026-01-11-225344.png",
       description: "An interactive arch-viz project focusing on real-time customization and user-driven exploration of interior spaces.",
       technicalContributions: [
         {
@@ -310,8 +310,8 @@ export const portfolioContent = {
       platforms: ["PC"],
       responsibility: "Level Design, lighting, environment composition.",
       link: "https://drive.google.com/drive/folders/1vdOA53pYNmUSyQY25BRooZh1e2pTf-b0?usp=sharing",
-      image: "https://images.unsplash.com/photo-1440778303588-4355ec920b39?q=80&w=2070&auto=format&fit=crop",
-      bgCover: "https://drive.google.com/file/d/1U1ePdfubIj6M2zrvdOldIRatXzsjyVJf/view?usp=sharing",
+      image: "https://i.ibb.co/HL20hPqH/Render-4-1.png",
+      bgCover: "https://i.ibb.co/HL20hPqH/Render-4-1.png",
       description: "A jungle-themed environment focused on natural exploration, featuring realistic outdoor elements and dynamic lighting.",
       technicalContributions: [
         {
@@ -323,7 +323,7 @@ export const portfolioContent = {
           ]
         }
       ],
-      techStack: ["Unreal Engine", "Ultra Dynamic Sky", "Foliage Tool"],
+      techStack: ["Unreal Engine", "Ultra Dynamic Sky"],
       color: "#4ade80"
     }
   ]

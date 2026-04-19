@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mail, MapPin, Github, Linkedin, CheckCircle, Loader } from 'lucide-react';
 import gsap from 'gsap';
 import { portfolioContent } from '../constants/content';
+import emailjs from '@emailjs/browser';
 
 
 type Status = 'idle' | 'sending' | 'sent';
@@ -10,11 +11,13 @@ type Status = 'idle' | 'sending' | 'sent';
 const FloatingLabelInput = ({
   id,
   label,
+  name,
   type = 'text',
   placeholder,
 }: {
   id: string;
   label: string;
+  name: string;
   type?: string;
   placeholder: string;
 }) => {
@@ -26,18 +29,6 @@ const FloatingLabelInput = ({
 
   return (
     <div style={{ position: 'relative' }}>
-      {/* Animated glow border */}
-      <div style={{
-        position: 'absolute', inset: '-1px',
-        borderRadius: '13px',
-        background: focused
-          ? 'linear-gradient(135deg, rgba(140,82,255,0.6), rgba(0,212,255,0.3))'
-          : 'transparent',
-        transition: 'opacity 0.3s',
-        opacity: focused ? 1 : 0,
-        pointerEvents: 'none',
-        zIndex: 0,
-      }} />
 
       <div style={{ position: 'relative', zIndex: 1 }}>
         <label
@@ -64,6 +55,7 @@ const FloatingLabelInput = ({
         <input
           ref={inputRef}
           id={id}
+          name={name}
           type={type}
           placeholder={focused ? placeholder : ''}
           className="premium-input"
@@ -71,33 +63,29 @@ const FloatingLabelInput = ({
             paddingTop: active ? '22px' : '14px',
             paddingBottom: active ? '6px' : '14px',
             borderRadius: '12px',
-            border: `1px solid ${focused ? 'transparent' : 'rgba(255,255,255,0.07)'}`,
+            border: `1px solid ${focused ? 'var(--accent)' : 'rgba(255,255,255,0.07)'}`,
             background: 'rgba(0,0,0,0.3)',
             position: 'relative',
             zIndex: 1,
+            outline: 'none',
           }}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           onChange={e => setHasValue(e.target.value.length > 0)}
+          required
         />
       </div>
     </div>
   );
 };
 
-const FloatingLabelTextarea = ({ id, label, placeholder }: { id: string; label: string; placeholder: string }) => {
+const FloatingLabelTextarea = ({ id, label, name, placeholder }: { id: string; label: string; name: string; placeholder: string }) => {
   const [focused, setFocused] = useState(false);
   const [hasValue, setHasValue] = useState(false);
   const active = focused || hasValue;
 
   return (
     <div style={{ position: 'relative' }}>
-      <div style={{
-        position: 'absolute', inset: '-1px', borderRadius: '13px',
-        background: focused ? 'linear-gradient(135deg, rgba(140,82,255,0.6), rgba(0,212,255,0.3))' : 'transparent',
-        transition: 'opacity 0.3s', opacity: focused ? 1 : 0,
-        pointerEvents: 'none', zIndex: 0,
-      }} />
       <div style={{ position: 'relative', zIndex: 1 }}>
         <label htmlFor={id} style={{
           position: 'absolute', left: '16px', top: active ? '10px' : '16px',
@@ -112,19 +100,22 @@ const FloatingLabelTextarea = ({ id, label, placeholder }: { id: string; label: 
         </label>
         <textarea
           id={id}
+          name={name}
           rows={5}
           placeholder={focused ? placeholder : ''}
           className="premium-input"
           style={{
             paddingTop: active ? '28px' : '16px',
-            border: `1px solid ${focused ? 'transparent' : 'rgba(255,255,255,0.07)'}`,
+            border: `1px solid ${focused ? 'var(--accent)' : 'rgba(255,255,255,0.07)'}`,
             resize: 'none',
             borderRadius: '12px',
             position: 'relative', zIndex: 1,
+            outline: 'none',
           }}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
           onChange={e => setHasValue(e.target.value.length > 0)}
+          required
         />
       </div>
     </div>
@@ -135,12 +126,28 @@ const Contact = () => {
   const [status, setStatus] = useState<Status>('idle');
   const btnRef = useRef<HTMLButtonElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = () => {
-    if (status !== 'idle') return;
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status !== 'idle' || !formRef.current) return;
+
     setStatus('sending');
-    setTimeout(() => setStatus('sent'), 2000);
-    setTimeout(() => setStatus('idle'), 5000);
+
+    const SERVICE_ID = 'service_id';
+    const TEMPLATE_ID = 'template_id';
+    const PUBLIC_KEY = 'public_key';
+
+    emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
+      .then(() => {
+        setStatus('sent');
+        formRef.current?.reset();
+        setTimeout(() => setStatus('idle'), 5000);
+      }, (error) => {
+        console.error('Failed to send email:', error.text);
+        setStatus('idle');
+        alert('Failed to send message. Please try again later.');
+      });
   };
 
   // Magnetic button effect
@@ -225,20 +232,19 @@ const Contact = () => {
             Send a Message
           </h2>
 
-          <form style={{ display: 'flex', flexDirection: 'column', gap: '16px' }} onSubmit={e => e.preventDefault()}>
+          <form ref={formRef} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }} onSubmit={handleSubmit}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(200px, 1fr))', gap: '16px' }}>
-              <FloatingLabelInput id="name" label="Full Name" placeholder="John Doe" />
-              <FloatingLabelInput id="email" label="Email Address" type="email" placeholder="john@example.com" />
+              <FloatingLabelInput id="name" name="user_name" label="Full Name" placeholder="John Doe" />
+              <FloatingLabelInput id="email" name="user_email" label="Email Address" type="email" placeholder="john@example.com" />
             </div>
-            <FloatingLabelInput id="subject" label="Subject" placeholder="Project inquiry..." />
-            <FloatingLabelTextarea id="message" label="Your Message" placeholder="Hello! I'd love to collaborate on a project..." />
+            <FloatingLabelInput id="subject" name="subject" label="Subject" placeholder="Project inquiry..." />
+            <FloatingLabelTextarea id="message" name="message" label="Your Message" placeholder="Hello! I'd love to collaborate on a project..." />
 
             {/* Submit button */}
             <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
               <button
                 ref={btnRef}
-                type="button"
-                onClick={handleSubmit}
+                type="submit"
                 disabled={status !== 'idle'}
                 style={{
                   display: 'flex', alignItems: 'center', gap: '10px',

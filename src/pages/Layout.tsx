@@ -77,7 +77,7 @@ const Layout = () => {
         className="layout-wrapper"
         style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease 0.1s' }}
       >
-        <div className='w-full lg:max-w-[320px]'>
+        <div className='sidebar-container'>
           <Sidebar />
         </div>
         <div
@@ -95,7 +95,7 @@ const Layout = () => {
           }}
         >
           <Navbar />
-          <div style={{ padding: '24px', flex: 1 }} className="md:p-10 lg:p-12 pb-28 lg:pb-12">
+          <div className="main-content-container">
             <PageTransition>
               <Outlet />
             </PageTransition>

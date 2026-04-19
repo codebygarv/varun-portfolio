@@ -26,7 +26,7 @@ const ProjectDetails = () => {
             border: 'none', 
             borderRadius: '8px',
             color: '#fff',
-            cursor: 'none'
+            cursor: 'pointer'
           }}
         >
           Back to Portfolio
@@ -53,7 +53,7 @@ const ProjectDetails = () => {
           color: 'var(--text-subtle)',
           fontSize: '14px',
           fontWeight: 600,
-          cursor: 'none',
+          cursor: 'pointer',
           marginBottom: '30px',
           backdropFilter: 'blur(10px)',
           transition: 'all 0.3s'
@@ -70,12 +70,8 @@ const ProjectDetails = () => {
            initial={{ opacity: 0, scale: 0.95 }}
            animate={{ opacity: 1, scale: 1 }}
            transition={{ duration: 0.8 }}
+           className="project-hero"
            style={{
-             width: '100%',
-             height: '450px',
-             borderRadius: '30px',
-             overflow: 'hidden',
-             position: 'relative',
              boxShadow: `0 20px 50px rgba(0,0,0,0.5), 0 0 0 1px ${project.color}20`
            }}
         >
@@ -90,12 +86,7 @@ const ProjectDetails = () => {
             background: `linear-gradient(to top, var(--bg) 0%, transparent 100%), linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 60%)`
           }} />
 
-          <div style={{
-            position: 'absolute',
-            bottom: '40px',
-            left: '40px',
-            right: '40px'
-          }}>
+          <div className="project-hero-content">
             <motion.span
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -120,8 +111,8 @@ const ProjectDetails = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
+              className="hero-title-responsive"
               style={{
-                fontSize: '3.5rem',
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontWeight: 800,
                 color: '#fff',
@@ -148,9 +139,9 @@ const ProjectDetails = () => {
       </section>
 
       {/* Grid Content */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 350px', gap: '40px' }}>
+      <div className="project-details-grid">
         {/* Left Column: Contributions */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
+        <div className="project-main-content" style={{ display: 'flex', flexDirection: 'column', gap: '40px' }}>
           <section>
             <h2 style={{ 
               fontSize: '1.8rem', 
@@ -197,14 +188,12 @@ const ProjectDetails = () => {
         </div>
 
         {/* Right Column: Metadata */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div className="project-sidebar" style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div style={{
             background: 'var(--bg-card)',
             padding: '30px',
             borderRadius: '24px',
             border: '1px solid var(--border)',
-            position: 'sticky',
-            top: '100px'
           }}>
             <h3 style={{ fontSize: '1.3rem', color: '#fff', marginBottom: '24px', fontFamily: 'Space Grotesk, sans-serif' }}>Project Info</h3>
             
@@ -244,13 +233,11 @@ const ProjectDetails = () => {
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: '8px' }}>
                     {project.techStack.map(tech => (
                       <span key={tech} style={{
-                        fontSize: '11px',
-                        background: `${project.color}15`,
-                        color: project.color,
-                        border: `1px solid ${project.color}30`,
-                        padding: '3px 8px',
-                        borderRadius: '6px',
-                        fontWeight: 600
+                        fontSize: '13px',
+                        color: '#fff',
+                        background: 'rgba(255,255,255,0.05)',
+                        padding: '2px 8px',
+                        borderRadius: '4px'
                       }}>
                         {tech}
                       </span>
@@ -276,7 +263,7 @@ const ProjectDetails = () => {
                     color: '#fff',
                     fontWeight: 700,
                     textDecoration: 'none',
-                    cursor: 'none',
+                    cursor: 'pointer',
                     transition: 'transform 0.3s, filter 0.3s'
                   }}
                   onMouseEnter={(e) => {

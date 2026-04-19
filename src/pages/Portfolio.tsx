@@ -52,7 +52,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         boxShadow: hovered ? `0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px ${project.color}20` : '0 4px 20px rgba(0,0,0,0.2)',
         transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
         transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
-        cursor: 'none',
+        cursor: 'default',
         position: 'relative',
       }}
     >
@@ -165,7 +165,7 @@ const Portfolio = () => {
         transition={{ duration: 0.6 }}
         style={{ marginBottom: '48px' }}
       >
-        <h1 className="section-header" style={{ fontSize: '3rem', fontFamily: 'Space Grotesk, sans-serif' }}>Projects</h1>
+        <h1 className="section-header section-header-responsive" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>Projects</h1>
         <span className="section-divider" style={{ width: '80px', height: '4px', background: 'var(--accent)' }} />
         <p style={{ color: 'var(--text-subtle)', fontSize: '16px', marginTop: '16px', maxWidth: '600px', lineHeight: 1.6 }}>
           A showcase of my professional work and personal experiments in game development and interactive systems.
@@ -196,7 +196,7 @@ const Portfolio = () => {
                 background: isActive ? 'var(--accent)' : 'rgba(255,255,255,0.03)',
                 border: isActive ? '1px solid var(--accent)' : '1px solid rgba(255,255,255,0.08)',
                 color: isActive ? '#fff' : 'var(--text-muted)',
-                cursor: 'none',
+                cursor: 'pointer',
                 transition: 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)',
                 boxShadow: isActive ? '0 8px 16px rgba(140,82,255,0.25)' : 'none',
               }}
@@ -215,12 +215,7 @@ const Portfolio = () => {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4 }}
-          style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(350px, 1fr))', 
-            gap: '30px',
-            paddingBottom: '60px'
-          }}
+          className="portfolio-grid"
         >
           {filtered.map((project, i) => (
             <ProjectCard key={project.id} project={project} index={i} />
