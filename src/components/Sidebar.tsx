@@ -52,8 +52,6 @@ const Sidebar = () => {
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] as [number, number, number, number] }}
       style={{
-        position: 'sticky',
-        top: '32px',
         flexShrink: 0,
         width: '100%',
       }}

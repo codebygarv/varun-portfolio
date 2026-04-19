@@ -3,15 +3,16 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronRight, ArrowUpRight } from 'lucide-react';
-import { portfolioContent } from '../constants/content';
+import { ChevronRight, ArrowUpRight, Play, Image as ImageIcon } from 'lucide-react';
+import { portfolioContent, type Project } from '../constants/content';
+import MediaModal from '../components/MediaModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const filters = ['All', 'Professional', 'Personal'];
 
 interface ProjectCardProps {
-  project: typeof portfolioContent.projects[0];
+  project: Project;
   index: number;
 }
 
@@ -52,7 +53,7 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         boxShadow: hovered ? `0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px ${project.color}20` : '0 4px 20px rgba(0,0,0,0.2)',
         transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
         transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
-        cursor: 'default',
+        cursor: 'pointer',
         position: 'relative',
       }}
     >
@@ -130,12 +131,23 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
           </span>
         </div>
 
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '16px', borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+        <div 
+          style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center', 
+            paddingTop: '16px', 
+            borderTop: '1px solid rgba(255,255,255,0.05)',
+            transition: 'all 0.3s',
+            margin: '0 -24px -24px',
+            padding: '16px 24px',
+          }}
+        >
           <span style={{
-            fontSize: '11px', fontWeight: 700, color: project.color,
+            fontSize: '11px', fontWeight: 800, color: project.color,
             letterSpacing: '0.1em', textTransform: 'uppercase',
           }}>
-            Explore Details
+            Explore Project
           </span>
           <ChevronRight size={16} color={project.color} />
         </div>
@@ -147,9 +159,11 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('All');
 
-  const filtered = activeFilter === 'All'
+  const filtered = (activeFilter === 'All'
     ? portfolioContent.projects
-    : portfolioContent.projects.filter(p => p.type === activeFilter);
+    : portfolioContent.projects.filter(p => p.type === activeFilter)) as Project[];
+
+  const [selectedMediaProject, setSelectedMediaProject] = useState<Project | null>(null);
 
   useEffect(() => {
     ScrollTrigger.refresh();
@@ -218,7 +232,11 @@ const Portfolio = () => {
           className="portfolio-grid"
         >
           {filtered.map((project, i) => (
-            <ProjectCard key={project.id} project={project} index={i} />
+            <ProjectCard 
+              key={project.id} 
+              project={project} 
+              index={i} 
+            />
           ))}
         </motion.div>
       </AnimatePresence>

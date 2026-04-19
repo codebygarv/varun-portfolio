@@ -580,6 +580,9 @@ h6 {
 @media (min-width: 1024px) {
   .sidebar-container {
     max-width: 320px;
+    position: sticky;
+    top: 30px;
+    align-self: flex-start;
   }
   
   .main-content-container {

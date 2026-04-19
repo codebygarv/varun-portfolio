@@ -1,3 +1,30 @@
+export interface MediaContent {
+  readonly type: 'video' | 'youtube' | 'images';
+  readonly url?: string;
+  readonly urls?: readonly string[];
+}
+
+export interface Project {
+  readonly id: string;
+  readonly type: string;
+  readonly title: string;
+  readonly role: string;
+  readonly duration: string;
+  readonly platforms: readonly string[];
+  readonly responsibility: string;
+  readonly link: string;
+  readonly image: string;
+  readonly bgCover: string;
+  readonly description: string;
+  readonly technicalContributions: readonly {
+    readonly category: string;
+    readonly points: readonly string[];
+  }[];
+  readonly techStack: readonly string[];
+  readonly color: string;
+  readonly media?: MediaContent;
+}
+
 export const portfolioContent = {
   about: {
     hero: {
@@ -172,7 +199,7 @@ export const portfolioContent = {
         }
       ],
       techStack: ["Unreal Engine (Blueprints, C++)", "Behavior Trees", "Blackboard", "State Tree", "Pawn Sensing", "UMG", "World Partition", "Level Streaming", "Unreal Insights"],
-      color: "#ff4d4d"
+      color: "#8c52ff"
     },
     {
       id: "great-train-outlaws",
@@ -183,8 +210,8 @@ export const portfolioContent = {
       platforms: ["VR", "Meta Quest 3", "PICO Ultra 4", "Arcade LBE"],
       responsibility: "Player setup, gameplay, AI, Game Mechanics, Code integration.",
       link: "https://deployreality.com/synthesisvr/games/great-train-outlaws",
-      image: "https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=2050&auto=format&fit=crop",
-      bgCover: "https://drive.google.com/file/d/1nzYDJ-gTSIDUMSjN0YeC8Alx0hcEE73Q/view?usp=sharing",
+      image: "https://i.ibb.co/0jzd0jr3/Screenshot-2026-04-18-163819.png",
+      bgCover: "https://i.ibb.co/0jzd0jr3/Screenshot-2026-04-18-163819.png",
       description: "A location-based multiplayer VR (LBVR) Wild West shooter designed for arcade setups, supporting up to 4-player cooperative gameplay on moving train environments.",
       technicalContributions: [
         {
@@ -211,7 +238,7 @@ export const portfolioContent = {
         }
       ],
       techStack: ["Unreal Engine (Blueprints, C++)", "Networking (Client-Server)", "Replication", "Behavior Trees", "Hand Tracking", "Free-roam tracking"],
-      color: "#ffd700"
+     color: "#8c52ff"
     },
     {
       id: "death-rush",
@@ -249,7 +276,7 @@ export const portfolioContent = {
         }
       ],
       techStack: ["Unreal Engine", "Blueprints", "C++", "AdMob SDK", "Behavior Trees", "UMG", "Android Optimization"],
-      color: "#00ff00"
+      color: "#8c52ff"
     },
     {
       id: "metaverse-prototype",
@@ -274,7 +301,11 @@ export const portfolioContent = {
         }
       ],
       techStack: ["Unreal Engine (Blueprints)", "UMG", "PC"],
-      color: "#00d4ff"
+      color: "#8c52ff",
+      media: {
+        type: 'video',
+        url: 'https://drive.google.com/file/d/1OfP5nymQftKVIMtFZfLlnZ0-bbBERjf4/view'
+      }
     },
     {
       id: "arch-viz",
@@ -285,8 +316,8 @@ export const portfolioContent = {
       platforms: ["PC"],
       responsibility: "Player setup, Texture Inventory, UI, Runtime Material switch.",
       link: "https://www.youtube.com/watch?v=P6OmDA0Qa2c",
-      image: "https://i.ibb.co/QFC9gNH9/Screenshot-2026-01-11-225344.png",
-      bgCover: "https://i.ibb.co/QFC9gNH9/Screenshot-2026-01-11-225344.png",
+      image: "https://i.ibb.co/n8gXxD75/Living-Thumbnail-1.png",
+      bgCover: "https://i.ibb.co/n8gXxD75/Living-Thumbnail-1.png",
       description: "An interactive arch-viz project focusing on real-time customization and user-driven exploration of interior spaces.",
       technicalContributions: [
         {
@@ -299,7 +330,11 @@ export const portfolioContent = {
         }
       ],
       techStack: ["Unreal Engine (Blueprints)", "UMG", "Material Parameters"],
-      color: "#FEDF9E"
+      color: "#8c52ff",
+      media: {
+        type: 'youtube',
+        url: 'https://www.youtube.com/watch?v=P6OmDA0Qa2c'
+      }
     },
     {
       id: "jungle-level-design",
@@ -323,8 +358,17 @@ export const portfolioContent = {
           ]
         }
       ],
-      techStack: ["Unreal Engine", "Ultra Dynamic Sky"],
-      color: "#4ade80"
+      techStack: ["Unreal Engine (Blueprints)", "Ultra Dynamic Sky"],
+      color: "#8c52ff",
+      media: {
+        type: 'images',
+        urls: [
+          "https://i.ibb.co/HL20hPqH/Render-4-1.png",
+          "https://i.ibb.co/60qYvVb/Render-3-1.png",
+          "https://i.ibb.co/9H2Vf5W/Render-2-1.png",
+          "https://i.ibb.co/n8gXxD75/Living-Thumbnail-1.png"
+        ]
+      }
     }
   ]
-};
+} as const;

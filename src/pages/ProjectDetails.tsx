@@ -1,13 +1,15 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { portfolioContent } from '../constants/content';
-import { ArrowLeft, ExternalLink, Calendar, Briefcase, Monitor, Cpu } from 'lucide-react';
-import { useEffect } from 'react';
+import { portfolioContent, type Project } from '../constants/content';
+import { ArrowLeft, ExternalLink, Calendar, Briefcase, Monitor, Cpu, Play, Image as ImageIcon } from 'lucide-react';
+import { useEffect, useState } from 'react';
+import MediaModal from '../components/MediaModal';
 
 const ProjectDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  const project = portfolioContent.projects.find(p => p.id === id);
+  const project = portfolioContent.projects.find(p => p.id === id) as Project | undefined;
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -138,6 +140,15 @@ const ProjectDetails = () => {
         </motion.div>
       </section>
 
+      {/* Media Modal */}
+      <MediaModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        media={project.media}
+        title={project.title}
+        color={project.color}
+      />
+
       {/* Grid Content */}
       <div className="project-details-grid">
         {/* Left Column: Contributions */}
@@ -246,38 +257,49 @@ const ProjectDetails = () => {
                 </div>
               </div>
 
-              <div style={{ marginTop: '10px' }}>
-                <a 
-                  href={project.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+              <div style={{ marginTop: '20px' }}>
+                <button 
+                  onClick={() => {
+                    if (project.media) {
+                      setIsModalOpen(true);
+                    } else {
+                      window.open(project.link, '_blank');
+                    }
+                  }}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    gap: '10px',
+                    gap: '12px',
                     width: '100%',
-                    padding: '14px',
-                    borderRadius: '12px',
+                    padding: '18px',
+                    borderRadius: '16px',
                     background: project.color,
                     color: '#fff',
-                    fontWeight: 700,
-                    textDecoration: 'none',
+                    border: 'none',
+                    fontSize: '16px',
+                    fontWeight: 800,
                     cursor: 'pointer',
-                    transition: 'transform 0.3s, filter 0.3s'
+                    transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
+                    fontFamily: 'Space Grotesk, sans-serif',
+                    boxShadow: `0 10px 30px ${project.color}40`,
+                    textTransform: 'uppercase',
+                    letterSpacing: '1px'
                   }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.transform = 'translateY(-4px)';
+                    e.currentTarget.style.boxShadow = `0 20px 40px ${project.color}60`;
                     e.currentTarget.style.filter = 'brightness(1.1)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = `0 10px 30px ${project.color}40`;
                     e.currentTarget.style.filter = 'brightness(1)';
                   }}
                 >
-                  <ExternalLink size={18} />
-                  View Project
-                </a>
+                  {project.media ? (project.media.type === 'images' ? <ImageIcon size={20} /> : <Play size={20} fill="currentColor" />) : <ExternalLink size={20} />}
+                  {project.media ? (project.media.type === 'images' ? 'Launch Gallery' : 'Watch Showcase') : 'Explore Project'}
+                </button>
               </div>
             </div>
           </div>
