@@ -3,9 +3,9 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { ChevronRight, ArrowUpRight, Play, Image as ImageIcon } from 'lucide-react';
+import { ChevronRight, ArrowUpRight, Image as ImageIcon, LayoutGrid } from 'lucide-react';
+
 import { portfolioContent, type Project } from '../constants/content';
-import MediaModal from '../components/MediaModal';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -158,33 +158,97 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
 const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState('All');
+  const [viewMode, setViewMode] = useState<'grid' | 'image'>('grid');
+  const navigate = useNavigate();
+
 
   const filtered = (activeFilter === 'All'
     ? portfolioContent.projects
     : portfolioContent.projects.filter(p => p.type === activeFilter)) as Project[];
 
-  const [selectedMediaProject, setSelectedMediaProject] = useState<Project | null>(null);
-
   useEffect(() => {
     ScrollTrigger.refresh();
     window.scrollTo(0, 0);
-  }, [activeFilter]);
+  }, [activeFilter, viewMode]);
 
   return (
     <div>
       {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        style={{ marginBottom: '48px' }}
-      >
-        <h1 className="section-header section-header-responsive" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>Projects</h1>
-        <span className="section-divider" style={{ width: '80px', height: '4px', background: 'var(--accent)' }} />
-        <p style={{ color: 'var(--text-subtle)', fontSize: '16px', marginTop: '16px', maxWidth: '600px', lineHeight: 1.6 }}>
-          A showcase of my professional work and personal experiments in game development and interactive systems.
-        </p>
-      </motion.div>
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'space-between', 
+        alignItems: 'flex-end',
+        flexWrap: 'wrap',
+        gap: '24px',
+        marginBottom: '48px'
+      }}>
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <h1 className="section-header section-header-responsive" style={{ fontFamily: 'Space Grotesk, sans-serif' }}>Projects</h1>
+          <span className="section-divider" style={{ width: '80px', height: '4px', background: 'var(--accent)' }} />
+          <p style={{ color: 'var(--text-subtle)', fontSize: '16px', marginTop: '16px', maxWidth: '600px', lineHeight: 1.6 }}>
+            A showcase of my professional work and personal experiments in game development and interactive systems.
+          </p>
+        </motion.div>
+
+        {/* View Mode Toggle */}
+        <motion.div 
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          style={{ 
+            display: 'flex', 
+            background: 'rgba(255,255,255,0.03)', 
+            padding: '4px', 
+            borderRadius: '12px',
+            border: '1px solid rgba(255,255,255,0.08)'
+          }}
+        >
+          <button 
+            onClick={() => setViewMode('grid')}
+            style={{
+              padding: '8px 12px',
+              borderRadius: '8px',
+              background: viewMode === 'grid' ? 'rgba(255,255,255,0.1)' : 'transparent',
+              border: 'none',
+              color: viewMode === 'grid' ? '#fff' : 'var(--text-muted)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '12px',
+              fontWeight: 600,
+              transition: 'all 0.3s'
+            }}
+          >
+            <LayoutGrid size={16} />
+            Details
+          </button>
+
+          <button 
+            onClick={() => setViewMode('image')}
+            style={{
+              padding: '8px 12px',
+              borderRadius: '8px',
+              background: viewMode === 'image' ? 'rgba(255,255,255,0.1)' : 'transparent',
+              border: 'none',
+              color: viewMode === 'image' ? '#fff' : 'var(--text-muted)',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '12px',
+              fontWeight: 600,
+              transition: 'all 0.3s'
+            }}
+          >
+            <ImageIcon size={16} />
+            Imagemode
+          </button>
+        </motion.div>
+      </div>
 
       {/* Filter tabs */}
       <motion.div
@@ -224,19 +288,68 @@ const Portfolio = () => {
       {/* Grid */}
       <AnimatePresence mode="wait">
         <motion.div
-          key={activeFilter}
+          key={`${activeFilter}-${viewMode}`}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
           transition={{ duration: 0.4 }}
-          className="portfolio-grid"
+          className={viewMode === 'image' ? 'portfolio-grid-image' : 'portfolio-grid'}
         >
           {filtered.map((project, i) => (
-            <ProjectCard 
-              key={project.id} 
-              project={project} 
-              index={i} 
-            />
+            viewMode === 'image' ? (
+              <motion.div
+                key={project.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.05 }}
+                onClick={() => navigate(`/portfolio/${project.id}`)}
+
+                className="image-mode-card"
+                style={{
+                  position: 'relative',
+                  height: '400px',
+                  borderRadius: '24px',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                  border: '1px solid var(--border)',
+                }}
+              >
+                <img 
+                  src={project.image} 
+                  alt={project.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s' }}
+                />
+                <div style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'flex-end',
+                  padding: '24px',
+                  opacity: 1,
+                  transition: 'opacity 0.3s'
+                }}>
+                  <span style={{ 
+                    fontSize: '10px', 
+                    fontWeight: 800, 
+                    color: project.color, 
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.1em',
+                    marginBottom: '4px'
+                  }}>
+                    {project.type}
+                  </span>
+                  <h3 style={{ fontSize: '1.5rem', color: '#fff', fontWeight: 700 }}>{project.title}</h3>
+                </div>
+              </motion.div>
+            ) : (
+              <ProjectCard 
+                key={project.id} 
+                project={project} 
+                index={i} 
+              />
+            )
           ))}
         </motion.div>
       </AnimatePresence>

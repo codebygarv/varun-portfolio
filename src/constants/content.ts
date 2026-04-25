@@ -143,6 +143,15 @@ export const portfolioContent = {
           ]
         },
         {
+          category: "Gameplay Framework & Systems",
+          points:[
+	        "Game Modes & Game States for session control",
+		      "Blueprint scripting + C++ integration for rapid iteration and performance",
+	        "Collision channels and physics simulation for combat and interaction ",
+          "Built reusable gameplay modules for scalability and maintainability. "
+          ]
+        },
+        {
           category: "PlayStation VR Porting",
           points: [
             "Contributed to platform adaptation and release pipeline for PSVR/PSVR2.",
@@ -363,10 +372,15 @@ export const portfolioContent = {
       media: {
         type: 'images',
         urls: [
-          "https://i.ibb.co/HL20hPqH/Render-4-1.png",
-          "https://i.ibb.co/60qYvVb/Render-3-1.png",
-          "https://i.ibb.co/9H2Vf5W/Render-2-1.png",
-          "https://i.ibb.co/n8gXxD75/Living-Thumbnail-1.png"
+          "https://i.ibb.co/qMJsmm9y/Render-1.png",
+          "https://i.ibb.co/Dfz7dwz3/Render-2.png",
+          "https://i.ibb.co/LXp8KRhf/Render-3-png.png",
+          "https://i.ibb.co/nMy0n75F/Render-4.png",
+          "https://i.ibb.co/C33Bx2FP/Render-5-1.png",
+          "https://i.ibb.co/Cp7T1mLZ/Render-6.png",
+          "https://i.ibb.co/KjR8tvfK/Render-7-1.png",
+          "https://i.ibb.co/Y4FbMrVv/Render-9.png",
+          "https://i.ibb.co/W410zRjL/Render-10.png"
         ]
       }
     }

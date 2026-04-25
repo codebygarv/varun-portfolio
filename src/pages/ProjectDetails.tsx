@@ -88,27 +88,34 @@ const ProjectDetails = () => {
             background: `linear-gradient(to top, var(--bg) 0%, transparent 100%), linear-gradient(to right, rgba(0,0,0,0.8) 0%, transparent 60%)`
           }} />
 
-          <div className="project-hero-content">
-            <motion.span
+          <div className="project-hero-content" style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-end',
+            height: '100%'
+          }}>
+            <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              style={{
+            >
+              <span style={{
                 background: `${project.color}25`,
                 color: project.color,
                 padding: '6px 14px',
                 borderRadius: '99px',
-                fontSize: '12px',
+                fontSize: '11px',
                 fontWeight: 700,
                 letterSpacing: '0.05em',
                 textTransform: 'uppercase',
                 border: `1px solid ${project.color}40`,
                 display: 'inline-block',
-                marginBottom: '16px'
-              }}
-            >
-              {project.type} Project
-            </motion.span>
+                marginBottom: '12px',
+                backdropFilter: 'blur(10px)'
+              }}>
+                {project.type} Project
+              </span>
+            </motion.div>
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -118,7 +125,8 @@ const ProjectDetails = () => {
                 fontFamily: 'Space Grotesk, sans-serif',
                 fontWeight: 800,
                 color: '#fff',
-                marginBottom: '10px'
+                marginBottom: '8px',
+                lineHeight: 1.1
               }}
             >
               {project.title}
@@ -128,15 +136,17 @@ const ProjectDetails = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
               style={{
-                fontSize: '1.2rem',
+                fontSize: 'clamp(14px, 4vw, 18px)',
                 color: 'var(--text-subtle)',
-                maxWidth: '700px',
-                lineHeight: 1.6
+                maxWidth: '650px',
+                lineHeight: 1.5,
+                margin: 0
               }}
             >
               {project.description}
             </motion.p>
           </div>
+
         </motion.div>
       </section>
 
@@ -163,9 +173,10 @@ const ProjectDetails = () => {
               alignItems: 'center',
               gap: '12px'
             }}>
-              <span style={{ width: '40px', height: '2px', background: project.color }}></span>
+              <span style={{ width: '30px', height: '2px', background: project.color }}></span>
               Technical Contributions
             </h2>
+
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '30px' }}>
               {project.technicalContributions?.map((category, idx) => (
@@ -177,10 +188,11 @@ const ProjectDetails = () => {
                   transition={{ delay: idx * 0.1 }}
                   style={{
                     background: 'rgba(255,255,255,0.03)',
-                    padding: '30px',
+                    padding: '24px',
                     borderRadius: '20px',
                     border: '1px solid rgba(255,255,255,0.05)'
                   }}
+
                 >
                   <h3 style={{ color: project.color, fontSize: '1.2rem', fontWeight: 700, marginBottom: '20px', fontFamily: 'Space Grotesk, sans-serif' }}>
                     {category.category}

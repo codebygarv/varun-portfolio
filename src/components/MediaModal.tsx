@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Maximize2, Loader2 } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Loader2 } from 'lucide-react';
 
 interface MediaModalProps {
   isOpen: boolean;
@@ -96,7 +96,8 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, onClose, media, title, 
           }}
           onClick={onClose}
         >
-          {/* Header Bar - More like a cinematic floating bar */}
+          <div>
+            {/* Header Bar - More like a cinematic floating bar */}
           <motion.div 
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -318,6 +319,7 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, onClose, media, title, 
                 </div>
             )}
           </motion.div>
+          </div>
 
           
         </motion.div>
