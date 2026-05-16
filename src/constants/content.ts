@@ -93,7 +93,7 @@ export const portfolioContent = {
   },
   microcopy: {
     viewWork: "Explore the Archives",
-    letsConnect: "Inquire for Collaboration",
+    letsConnect: "Inquire for Work",
     downloadResume: "Resume",
   },
   projects: [

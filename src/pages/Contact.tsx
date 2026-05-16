@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Send, Mail, MapPin, Github, Linkedin, CheckCircle, Loader } from 'lucide-react';
+import { Send, Mail, MapPin,CheckCircle, Loader } from 'lucide-react';
 import gsap from 'gsap';
 import { portfolioContent } from '../constants/content';
 import emailjs from '@emailjs/browser';
@@ -134,9 +134,9 @@ const Contact = () => {
 
     setStatus('sending');
 
-    const SERVICE_ID = 'service_id';
-    const TEMPLATE_ID = 'template_id';
-    const PUBLIC_KEY = 'public_key';
+    const SERVICE_ID = 'service_msv2kfl';
+    const TEMPLATE_ID = 'template_94i8kh5';
+    const PUBLIC_KEY = '-vhiJUyLCjJ43XsUh';
 
     emailjs.sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
       .then(() => {
@@ -173,9 +173,7 @@ const Contact = () => {
 
   const quickContacts = [
     { icon: Mail, label: 'Email', value: portfolioContent.contact.email, href: `mailto:${portfolioContent.contact.email}` },
-    { icon: MapPin, label: 'Location', value: portfolioContent.contact.location, href: null },
-    { icon: Github, label: 'GitHub', value: 'github.com/varun', href: portfolioContent.socials.github },
-    { icon: Linkedin, label: 'LinkedIn', value: 'linkedin.com/in/varun', href: portfolioContent.socials.linkedin },
+    { icon: MapPin, label: 'Location', value: portfolioContent.contact.location, href: null }
   ];
 
 
