@@ -18,30 +18,18 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project, index }: ProjectCardProps) => {
   const [hovered, setHovered] = useState(false);
-  const cardRef = useRef<HTMLDivElement>(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    if (!cardRef.current) return;
-    gsap.fromTo(cardRef.current,
-      { opacity: 0, y: 40, scale: 0.95 },
-      {
-        opacity: 1, y: 0, scale: 1,
-        duration: 0.65,
-        ease: 'power3.out',
-        delay: (index % 3) * 0.1,
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: 'top 90%',
-          toggleActions: 'play none none reverse',
-        },
-      }
-    );
-  }, [index]);
 
   return (
     <motion.div
-      ref={cardRef}
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ 
+        duration: 0.7, 
+        ease: [0.23, 1, 0.32, 1],
+        delay: (index % 3) * 0.05 
+      }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => navigate(`/portfolio/${project.id}`)}
@@ -49,12 +37,17 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
         borderRadius: '24px',
         overflow: 'hidden',
         background: 'var(--bg-card)',
-        border: `1px solid ${hovered ? `${project.color}40` : 'var(--border)'}`,
-        boxShadow: hovered ? `0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px ${project.color}20` : '0 4px 20px rgba(0,0,0,0.2)',
-        transition: 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)',
-        transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
+        border: '1px solid var(--border)',
+        boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
         cursor: 'pointer',
         position: 'relative',
+        zIndex: 1,
+      }}
+      whileHover={{ 
+        y: -8,
+        borderColor: `${project.color}40`,
+        boxShadow: `0 20px 40px rgba(0,0,0,0.4), 0 0 0 1px ${project.color}20`,
+        transition: { duration: 0.4, ease: [0.23, 1, 0.32, 1] }
       }}
     >
       {/* Type badge */}
@@ -73,20 +66,23 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
 
       {/* Image container */}
       <div style={{ position: 'relative', height: '240px', overflow: 'hidden' }}>
-        <img
+        <motion.img
           src={project.image}
           alt={project.title}
+          animate={{ 
+            scale: hovered ? 1.1 : 1,
+            filter: hovered ? 'brightness(0.9)' : 'brightness(0.8)'
+          }}
+          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
           style={{
             width: '100%', height: '100%', objectFit: 'cover',
-            transform: hovered ? 'scale(1.1)' : 'scale(1)',
-            transition: 'transform 0.8s cubic-bezier(0.23, 1, 0.32, 1)',
-            filter: hovered ? 'brightness(0.9)' : 'brightness(0.8)',
           }}
         />
         <div style={{
           position: 'absolute', inset: 0,
-          background: `linear-gradient(to top, var(--bg-card) 0%, transparent 60%)`,
-          opacity: 0.8
+          // background: `linear-gradient(to top, var(--bg-card) 0%, transparent 60%)`,
+          opacity: 0.8,
+          zIndex: 1
         }} />
       </div>
 
@@ -138,7 +134,6 @@ const ProjectCard = ({ project, index }: ProjectCardProps) => {
             alignItems: 'center', 
             paddingTop: '16px', 
             borderTop: '1px solid rgba(255,255,255,0.05)',
-            transition: 'all 0.3s',
             margin: '0 -24px -24px',
             padding: '16px 24px',
           }}
@@ -301,9 +296,9 @@ const Portfolio = () => {
                 key={project.id}
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: i * 0.05 }}
+                whileHover={{ y: -5 }}
+                transition={{ delay: i * 0.05, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
                 onClick={() => navigate(`/portfolio/${project.id}`)}
-
                 className="image-mode-card"
                 style={{
                   position: 'relative',
@@ -312,12 +307,15 @@ const Portfolio = () => {
                   overflow: 'hidden',
                   cursor: 'pointer',
                   border: '1px solid var(--border)',
+                  background: 'var(--bg-card)',
                 }}
               >
-                <img 
+                <motion.img 
                   src={project.image} 
                   alt={project.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.6s' }}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.6 }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div style={{
                   position: 'absolute',
@@ -327,8 +325,7 @@ const Portfolio = () => {
                   flexDirection: 'column',
                   justifyContent: 'flex-end',
                   padding: '24px',
-                  opacity: 1,
-                  transition: 'opacity 0.3s'
+                  zIndex: 1
                 }}>
                   <span style={{ 
                     fontSize: '10px', 

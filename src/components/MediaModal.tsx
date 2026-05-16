@@ -96,7 +96,7 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, onClose, media, title, 
           }}
           onClick={onClose}
         >
-          <div>
+          <div className='w-full'>
             {/* Header Bar - More like a cinematic floating bar */}
           <motion.div 
             initial={{ y: -20, opacity: 0 }}

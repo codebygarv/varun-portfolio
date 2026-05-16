@@ -10,7 +10,7 @@ const contactItems = [
   { icon: Mail, label: 'Email', value: portfolioContent.contact.email, href: `mailto:${portfolioContent.contact.email}`, truncate: true },
   { icon: MapPin, label: 'Location', value: portfolioContent.contact.location, href: null, truncate: false },
   { icon: Phone, label: 'Phone', value: portfolioContent.contact.phone, href: null, truncate: false },
-  { icon: MessageCircle, label: 'Status', value: 'Open to Collaboration', href: null, truncate: false },
+  { icon: MessageCircle, label: 'Status', value: 'Open to Work', href: null, truncate: false },
 ];
 
 const socialLinks = [

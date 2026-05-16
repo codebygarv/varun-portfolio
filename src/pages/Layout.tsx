@@ -90,7 +90,7 @@ const Layout = () => {
             border: '1px solid var(--border)',
             borderRadius: '24px',
             position: 'relative',
-            overflow: 'hidden',
+            overflow: 'visible',
             minHeight: '80vh',
           }}
         >
