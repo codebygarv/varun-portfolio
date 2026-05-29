@@ -120,8 +120,8 @@ const Sidebar = () => {
             <img src="/vt.jpg" alt="Varun" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
 
-          <div style={{ textAlign: 'center' }} className="text-left md:text-center lg:text-center">
-            <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.25rem', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', textAlign: 'left', textWrap: 'balance' }}>
+          <div className="text-left lg:text-center">
+            <div style={{ fontFamily: 'Space Grotesk, sans-serif', fontSize: '1.25rem', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', textWrap: 'balance', }}>
               Varun
             </div>
             <div style={{
