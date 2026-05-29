@@ -387,5 +387,15 @@ export const portfolioContent = {
         ]
       }
     }
+  ],
+  certificates: [
+    {
+      id: "unreal-engine-5-multiplayer-fps",
+      title: "How to Make a FPS Game - Unreal Engine 5 Multiplayer",
+      issuer: "Udemy / Epic Games Academy",
+      issueDate: "20 May 2026",
+      pdfUrl: "/first.pdf",
+      previewImage: "/first_preview.png"
+    }
   ]
 } as const;

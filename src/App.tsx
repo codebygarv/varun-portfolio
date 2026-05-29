@@ -5,6 +5,7 @@ import Resume from "./pages/Resume"
 import Portfolio from "./pages/Portfolio"
 import ProjectDetails from "./pages/ProjectDetails"
 import Contact from "./pages/Contact"
+import Certificates from "./pages/Certificates"
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path="resume" element={<Resume />} />
           <Route path="portfolio" element={<Portfolio />} />
           <Route path="portfolio/:id" element={<ProjectDetails />} />
+          <Route path="certificates" element={<Certificates />} />
           <Route path="contact" element={<Contact />} />
         </Route>
       </Routes>
