@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Eye, ArrowUpRight } from 'lucide-react';
 import { portfolioContent } from '../constants/content';
+import MediaModal from '../components/MediaModal';
 
 interface CertificateCardProps {
   cert: {
@@ -13,9 +14,10 @@ interface CertificateCardProps {
     readonly previewImage: string;
   };
   index: number;
+  onView: () => void;
 }
 
-const CertificateCard = ({ cert, index }: CertificateCardProps) => {
+const CertificateCard = ({ cert, index, onView }: CertificateCardProps) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -30,6 +32,7 @@ const CertificateCard = ({ cert, index }: CertificateCardProps) => {
       }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onClick={onView}
       style={{
         borderRadius: '24px',
         overflow: 'hidden',
@@ -41,6 +44,7 @@ const CertificateCard = ({ cert, index }: CertificateCardProps) => {
         flexDirection: 'column',
         height: '100%',
         zIndex: 1,
+        cursor: 'pointer',
       }}
       whileHover={{
         y: -8,
@@ -104,7 +108,7 @@ const CertificateCard = ({ cert, index }: CertificateCardProps) => {
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
-          onClick={() => window.open(cert.pdfUrl, '_blank')}
+          onClick={(e) => { e.stopPropagation(); onView(); }}
           style={{
             width: '100%',
             display: 'flex',
@@ -143,6 +147,15 @@ const CertificateCard = ({ cert, index }: CertificateCardProps) => {
 };
 
 const Certificates = () => {
+  const [selectedCert, setSelectedCert] = useState<{
+    readonly id: string;
+    readonly title: string;
+    readonly issuer: string;
+    readonly issueDate: string;
+    readonly pdfUrl: string;
+    readonly previewImage: string;
+  } | null>(null);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -187,9 +200,19 @@ const Certificates = () => {
             key={cert.id}
             cert={cert}
             index={i}
+            onView={() => setSelectedCert(cert)}
           />
         ))}
       </motion.div>
+
+      {/* Media Modal popup for PDF viewing */}
+      <MediaModal
+        isOpen={selectedCert !== null}
+        onClose={() => setSelectedCert(null)}
+        media={selectedCert ? { type: 'pdf', url: selectedCert.pdfUrl } : undefined}
+        title={selectedCert?.title || ''}
+        color="var(--accent)"
+      />
     </div>
   );
 };

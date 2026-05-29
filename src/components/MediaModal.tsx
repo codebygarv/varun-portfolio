@@ -6,7 +6,7 @@ interface MediaModalProps {
   isOpen: boolean;
   onClose: () => void;
   media?: {
-    readonly type: 'video' | 'youtube' | 'images';
+    readonly type: 'video' | 'youtube' | 'images' | 'pdf';
     readonly url?: string;
     readonly urls?: readonly string[];
   };
@@ -114,51 +114,31 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, onClose, media, title, 
               padding:'10px'
             }}
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-                <span style={{ 
-                    color: color, 
-                    fontSize: '11px', 
-                    fontWeight: 800, 
-                    textTransform: 'uppercase', 
-                    letterSpacing: '3px',
-                    textShadow: '0 2px 10px rgba(0,0,0,0.5)'
-                }}>
-                    {media.type === 'images' ? 'Gallery Experience' : 'Media Preview'}
-                </span>
-                <h3 style={{ 
-                    color: '#fff', 
-                    fontSize: '1.25rem', 
-                    fontWeight: 700, 
-                    margin: 0, 
-                    fontFamily: 'Space Grotesk, sans-serif',
-                    textShadow: '0 2px 20px rgba(0,0,0,0.8)'
-                }}>
-                    {title} {media.type === 'images' && <span style={{ opacity: 0.5, fontSize: '0.8em', marginLeft: '10px' }}>{currentIndex + 1} / {media.urls?.length}</span>}
-                </h3>
-            </div>
+            {media.type !== 'pdf' && (
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+                  <span style={{ 
+                      color: color, 
+                      fontSize: '11px', 
+                      fontWeight: 800, 
+                      textTransform: 'uppercase', 
+                      letterSpacing: '3px',
+                      textShadow: '0 2px 10px rgba(0,0,0,0.5)'
+                  }}>
+                      {media.type === 'images' ? 'Gallery Experience' : 'Media Preview'}
+                  </span>
+                  <h3 style={{ 
+                      color: '#fff', 
+                      fontSize: '1.25rem', 
+                      fontWeight: 700, 
+                      margin: 0, 
+                      fontFamily: 'Space Grotesk, sans-serif',
+                      textShadow: '0 2px 20px rgba(0,0,0,0.8)'
+                  }}>
+                      {title} {media.type === 'images' && <span style={{ opacity: 0.5, fontSize: '0.8em', marginLeft: '10px' }}>{currentIndex + 1} / {media.urls?.length}</span>}
+                  </h3>
+              </div>
+            )}
 
-            <button
-                onClick={onClose}
-                style={{
-                    background: 'rgba(255,255,255,0.1)',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    color: '#fff',
-                    width: '44px',
-                    height: '44px',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                    backdropFilter: 'blur(10px)',
-                    pointerEvents: 'auto',
-                }}
-                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; e.currentTarget.style.transform = 'scale(1.1) rotate(90deg)'; }}
-                onMouseLeave={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'scale(1) rotate(0deg)'; }}
-            >
-                <X size={24} />
-            </button>
           </motion.div>
 
           {/* Main Modal Content Container */}
@@ -171,8 +151,8 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, onClose, media, title, 
               width: '100%',
               maxWidth: '900px',
               height: 'auto',
-              maxHeight: '75vh',
-              aspectRatio: media.type === 'images' ? 'unset' : '16/9',
+              maxHeight: '80vh',
+              aspectRatio: media.type === 'pdf' ? '1.414' : (media.type === 'images' ? 'unset' : '16/9'),
               position: 'relative',
               borderRadius: '24px',
               background: '#111113', // Matches --bg-surface
@@ -180,10 +160,38 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, onClose, media, title, 
               boxShadow: `0 30px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.05), 0 0 40px ${color}15`,
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              padding: media.type === 'pdf' ? '48px 32px 32px' : '0px'
             }}
             onClick={(e) => e.stopPropagation()}
           >
+            {/* Close button integrated into the modal card */}
+            <button
+                onClick={onClose}
+                style={{
+                    position: 'absolute',
+                    top: '12px',
+                    right: '12px',
+                    zIndex: 10100,
+                    background: '#111113',
+                    border: '1px solid rgba(255,255,255,0.15)',
+                    color: '#fff',
+                    width: '32px',
+                    height: '32px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    backdropFilter: 'blur(10px)',
+                    boxShadow: '0 4px 15px rgba(0,0,0,0.4)',
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.transform = 'scale(1.08) rotate(90deg)'; }}
+                onMouseLeave={(e) => { e.currentTarget.style.background = '#111113'; e.currentTarget.style.transform = 'scale(1) rotate(0deg)'; }}
+            >
+                <X size={16} />
+            </button>
             {/* Loading Spinner */}
             {!isLoaded && (
                 <div style={{ position: 'absolute', zIndex: 1, color: color }}>
@@ -214,6 +222,17 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, onClose, media, title, 
                     allow="autoplay"
                     style={{ border: 'none', width: '100%', height: '100%', opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s' }}
                     title="Drive video player"
+                />
+            )}
+
+            {media.type === 'pdf' && (
+                <iframe
+                    src={`${media.url}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`}
+                    onLoad={() => setIsLoaded(true)}
+                    width="100%"
+                    height="100%"
+                    style={{ border: 'none', width: '100%', height: '100%', opacity: isLoaded ? 1 : 0, transition: 'opacity 0.5s' }}
+                    title="PDF certificate player"
                 />
             )}
 
