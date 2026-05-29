@@ -53,13 +53,13 @@ export const portfolioContent = {
       degree: 'Master of Technology in Computer Science',
       institution: 'Kurukshetra University',
       period: '2024 – 2026',
-      desc: "Master's degree focusing on core gameplay systems, interactive narrative, and engine architecture. Participated in multiple game jams, leading the programming efforts using Unreal Engine and C++.",
+      desc: "Master's degree focused on advanced Data Structures & Algorithms, problem-solving, system design, and complex software engineering concepts. Developed expertise in optimizing scalable systems, analytical thinking, and tackling challenging computational problems.",
     },
     {
       degree: 'Bachelor of Technology in Computer Science',
       institution: 'Kurukshetra University',
       period: '2019 – 2024',
-      desc: "Bachelor's degree focusing on core gameplay systems, interactive narrative, and engine architecture. Participated in multiple game jams, leading the programming efforts using Unreal Engine and C++.",
+      desc: "Bachelor's degree in Computer Science with a strong foundation in software development, data structures, algorithms, database management, operating systems, and computer networks. Worked on multiple academic and personal projects using modern programming technologies and development practices.",
     }
 
   ],
@@ -144,11 +144,11 @@ export const portfolioContent = {
         },
         {
           category: "Gameplay Framework & Systems",
-          points:[
-	        "Game Modes & Game States for session control",
-		      "Blueprint scripting + C++ integration for rapid iteration and performance",
-	        "Collision channels and physics simulation for combat and interaction ",
-          "Built reusable gameplay modules for scalability and maintainability. "
+          points: [
+            "Game Modes & Game States for session control",
+            "Blueprint scripting + C++ integration for rapid iteration and performance",
+            "Collision channels and physics simulation for combat and interaction ",
+            "Built reusable gameplay modules for scalability and maintainability. "
           ]
         },
         {
@@ -247,7 +247,7 @@ export const portfolioContent = {
         }
       ],
       techStack: ["Unreal Engine (Blueprints, C++)", "Networking (Client-Server)", "Replication", "Behavior Trees", "Hand Tracking", "Free-roam tracking"],
-     color: "#8c52ff"
+      color: "#8c52ff"
     },
     {
       id: "death-rush",
