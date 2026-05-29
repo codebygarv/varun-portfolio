@@ -57,9 +57,13 @@ const CertificateCard = ({ cert, index, onView }: CertificateCardProps) => {
       <div style={{ position: 'relative', height: '240px', overflow: 'hidden', background: '#1a1a1c' }}>
         <iframe
           src={`${cert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+          scrolling="no"
           style={{
-            width: '100%',
-            height: '100%',
+            position: 'absolute',
+            width: '110%',
+            height: '110%',
+            top: '-5%',
+            left: '-5%',
             border: 'none',
             pointerEvents: 'none',
             overflow: 'hidden',

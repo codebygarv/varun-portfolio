@@ -35,7 +35,7 @@ export const portfolioContent = {
   experience: [
     {
       role: 'Game Developer',
-      company: 'Sunovatech',
+      company: 'Sunovatech India Private Limited',
       period: '2025 – Present',
       desc: 'Designing and implementing advanced AR/VR gameplay systems using Unreal Engine 5, with a strong focus on immersive interaction, real-time performance optimization, and scalable architecture. Developing intuitive user experiences for virtual and augmented environments, including motion controls, spatial interactions, and realistic physics. Collaborating with cross-functional teams to deliver high-quality, production-ready AR/VR applications that enhance user engagement and realism.',
       current: true,

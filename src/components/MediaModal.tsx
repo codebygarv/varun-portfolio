@@ -228,6 +228,7 @@ const MediaModal: React.FC<MediaModalProps> = ({ isOpen, onClose, media, title, 
             {media.type === 'pdf' && (
                 <iframe
                     src={`${media.url}#toolbar=0&navpanes=0&scrollbar=0&view=Fit`}
+                    scrolling="no"
                     onLoad={() => setIsLoaded(true)}
                     width="100%"
                     height="100%"
