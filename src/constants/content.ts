@@ -67,17 +67,20 @@ export const portfolioContent = {
     {
       category: "Game Engineering",
       items: [
-        { name: "Unreal Engine 5", focus: "Blueprints & Optimization", level: 95, color: "#8c52ff" },
+        { name: "Unreal Engine 5", focus: "Blueprints & Optimization", level: 95, color: "#00d4ff" },
         { name: "Gameplay Programming", focus: "Mechanics & Systems", level: 92, color: "#00d4ff" },
-        { name: "Physics & Mechanics", focus: "Interaction Design", level: 88, color: "#FEDF9E" },
+        { name: "Blueprints (Unreal Visual Scripting)", focus: "Visual Scripting & Prototyping", level: 93, color: "#3b82f6" },
+        { name: "Physics & Mechanics", focus: "Interaction Design", level: 88, color: "#22c55e" },
       ]
     },
     {
       category: "Technical & Design",
       items: [
-        { name: "Level Design", focus: "Environment & Flow", level: 85, color: "#4ade80" },
-        { name: "UI/UX Implementation", focus: "Interfaces & HUDs", level: 82, color: "#ff6b9d" },
-        { name: "Debugging & Optimization", focus: "Performance Tuning", level: 90, color: "#8c52ff" },
+        { name: "Level Design", focus: "Environment & Flow", level: 85, color: "#FEDF9E" },
+        { name: "UI/UX Implementation", focus: "Interfaces & HUDs", level: 82, color: "#4ade80" },
+        { name: "Debugging & Optimization", focus: "Performance Tuning", level: 90, color: "#ff6b6b" },
+        { name: "Source Control (Git, Perforce, SVN)", focus: "Version Control & Collaboration", level: 86, color: "#f97316" },
+        { name: "Cinematics & Videos", focus: "Sequencer & Visual Showcases", level: 80, color: "#ff6b9d" },
       ]
     },
   ],

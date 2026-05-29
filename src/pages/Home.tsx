@@ -8,62 +8,56 @@ import { SiUnrealengine } from 'react-icons/si';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const whatIDo = [
-  {
+const skillMetaData: Record<string, { icon: React.ComponentType; desc: string }> = {
+  'Unreal Engine 5': {
     icon: SiUnrealengine,
-    title: 'Unreal Engine 5',
     desc: 'Expertise in architecting complex systems using Blueprints and C++, with a sharp focus on performance optimization and visual fidelity.',
-    color: '#00d4ff',
   },
-  {
+  'Level Design': {
     icon: Layout,
-    title: 'Level Design',
     desc: 'Designing immersive environments with strong focus on player flow, pacing, and storytelling.',
-    color: '#FEDF9E',
   },
-  {
+  'Gameplay Programming': {
     icon: Target,
-    title: 'Gameplay Programming',
     desc: 'Developing core gameplay systems, mechanics, and interactive player experiences.',
-    color: '#00d4ff',
   },
-  {
+  'UI/UX Implementation': {
     icon: Monitor,
-    title: 'UI/UX Implementation',
     desc: 'Building intuitive, responsive, and visually engaging user interfaces for games.',
-    color: '#4ade80',
   },
-  {
+  'Debugging & Optimization': {
     icon: Bug,
-    title: 'Debugging & Optimization',
     desc: 'Fixing bugs, profiling performance, and optimizing systems for smooth gameplay.',
-    color: '#ff6b6b',
   },
-  {
+  'Blueprints (Unreal Visual Scripting)': {
     icon: Box,
-    title: 'Blueprints (Unreal Visual Scripting)',
     desc: 'Using Unreal Engine Blueprints to prototype and build scalable gameplay systems.',
-    color: '#3b82f6',
   },
-  {
+  'Source Control (Git, Perforce, SVN)': {
     icon: GitBranch,
-    title: 'Source Control (Git, Perforce, SVN)',
     desc: 'Managing projects efficiently using version control for collaboration and stability.',
-    color: '#f97316',
   },
-  {
+  'Physics & Mechanics': {
     icon: Cpu,
-    title: 'Physics & Mechanics',
     desc: 'Implementing realistic physics systems and advanced gameplay mechanics.',
-    color: '#22c55e',
   },
-  {
+  'Cinematics & Videos': {
     icon: Film,
-    title: 'Cinematics & Videos',
     desc: 'Creating cinematic sequences and visual showcases to enhance storytelling.',
-    color: '#ff6b9d',
   },
-];
+};
+
+const whatIDo = portfolioContent.skills.flatMap(category =>
+  category.items.map(item => {
+    const meta = skillMetaData[item.name as keyof typeof skillMetaData] || { icon: Target, desc: '' };
+    return {
+      icon: meta.icon,
+      title: item.name,
+      desc: meta.desc,
+      color: item.color,
+    };
+  })
+);
 
 
 
