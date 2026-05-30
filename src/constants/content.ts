@@ -109,8 +109,8 @@ export const portfolioContent = {
       platforms: ["steam vr", "meta quest 2&3", "PS4VR", "PS5VR2"],
       responsibility: "Player setup, gameplay, AI, UI, PlayStation porting.",
       link: "https://store.steampowered.com/app/1450060/Down_and_Out/",
-      image: "https://i.ibb.co/PGBRzJg0/Screenshot-2026-01-11-224815.png",
-      bgCover: "https://i.ibb.co/PGBRzJg0/Screenshot-2026-01-11-224815.png",
+      image: "/projects/down-and-out.png",
+      bgCover: "/projects/down-and-out.png",
       description: "A first-person VR open-world brawler featuring physics-driven combat, adaptive AI systems, and immersive interaction mechanics, developed for PC VR and PlayStation VR platforms.",
       technicalContributions: [
         {
@@ -175,8 +175,8 @@ export const portfolioContent = {
       platforms: ["PC", "Steam", "Playstation5", "Xbox"],
       responsibility: "Player setup, gameplay, AI, UI, Asset management, Game Mechanics, optimization, Code integration, debugging, Profiling.",
       link: "https://store.steampowered.com/app/3872430/SCP_Project_Pneuma/",
-      image: "https://i.ibb.co/tP1dhmqT/Screenshot-2026-01-11-224917.png",
-      bgCover: "https://i.ibb.co/tP1dhmqT/Screenshot-2026-01-11-224917.png",
+      image: "/projects/scp-project-pneuma.png",
+      bgCover: "/projects/scp-project-pneuma.png",
       description: "A cinematic single-player psychological survival horror game built in Unreal Engine, featuring narrative-driven exploration, stealth-based survival, and encounters with adaptive SCP entities.",
       technicalContributions: [
         {
@@ -222,8 +222,8 @@ export const portfolioContent = {
       platforms: ["VR", "Meta Quest 3", "PICO Ultra 4", "Arcade LBE"],
       responsibility: "Player setup, gameplay, AI, Game Mechanics, Code integration.",
       link: "https://deployreality.com/synthesisvr/games/great-train-outlaws",
-      image: "https://i.ibb.co/0jzd0jr3/Screenshot-2026-04-18-163819.png",
-      bgCover: "https://i.ibb.co/0jzd0jr3/Screenshot-2026-04-18-163819.png",
+      image: "/projects/great-train-outlaws.png",
+      bgCover: "/projects/great-train-outlaws.png",
       description: "A location-based multiplayer VR (LBVR) Wild West shooter designed for arcade setups, supporting up to 4-player cooperative gameplay on moving train environments.",
       technicalContributions: [
         {
@@ -261,8 +261,8 @@ export const portfolioContent = {
       platforms: ["Android", "PC"],
       responsibility: "Player setup, gameplay, AI, UI, Game Mechanics, Code integration, API Integration, Level Design, Optimization, Ad mob Integration.",
       link: "https://play.google.com/store/apps/details?id=com.Zombie.hunter.DeathRush",
-      image: "https://i.ibb.co/DmTRvVS/Highres-Screenshot00002.png",
-      bgCover: "https://i.ibb.co/DmTRvVS/Highres-Screenshot00002.png",
+      image: "/projects/death-rush.png",
+      bgCover: "/projects/death-rush.png",
       description: "A mobile Third-person zombie survival shooter featuring wave-based combat, progression systems, and AdMob monetization.",
       technicalContributions: [
         {
@@ -299,8 +299,8 @@ export const portfolioContent = {
       platforms: ["PC"],
       responsibility: "Player setup, gameplay, AI, UI, Level Design, Optimization.",
       link: "https://drive.google.com/file/d/1OfP5nymQftKVIMtFZfLlnZ0-bbBERjf4/view",
-      image: "https://i.ibb.co/834JgLc/Cover-Page-Metaverse.png",
-      bgCover: "https://i.ibb.co/834JgLc/Cover-Page-Metaverse.png",
+      image: "/projects/metaverse-prototype.png",
+      bgCover: "/projects/metaverse-prototype.png",
       description: "Developed interactive metaverse environments for educational and cultural purposes, featuring NPC interactions and HUD interfaces.",
       technicalContributions: [
         {
@@ -328,8 +328,8 @@ export const portfolioContent = {
       platforms: ["PC"],
       responsibility: "Player setup, Texture Inventory, UI, Runtime Material switch.",
       link: "https://www.youtube.com/watch?v=P6OmDA0Qa2c",
-      image: "https://i.ibb.co/n8gXxD75/Living-Thumbnail-1.png",
-      bgCover: "https://i.ibb.co/n8gXxD75/Living-Thumbnail-1.png",
+      image: "/projects/arch-viz.png",
+      bgCover: "/projects/arch-viz.png",
       description: "An interactive arch-viz project focusing on real-time customization and user-driven exploration of interior spaces.",
       technicalContributions: [
         {
@@ -357,8 +357,8 @@ export const portfolioContent = {
       platforms: ["PC"],
       responsibility: "Level Design, lighting, environment composition.",
       link: "https://drive.google.com/drive/folders/1vdOA53pYNmUSyQY25BRooZh1e2pTf-b0?usp=sharing",
-      image: "https://i.ibb.co/HL20hPqH/Render-4-1.png",
-      bgCover: "https://i.ibb.co/HL20hPqH/Render-4-1.png",
+      image: "/projects/jungle-level-design.png",
+      bgCover: "/projects/jungle-level-design.png",
       description: "A jungle-themed environment focused on natural exploration, featuring realistic outdoor elements and dynamic lighting.",
       technicalContributions: [
         {
@@ -375,15 +375,15 @@ export const portfolioContent = {
       media: {
         type: 'images',
         urls: [
-          "https://i.ibb.co/qMJsmm9y/Render-1.png",
-          "https://i.ibb.co/Dfz7dwz3/Render-2.png",
-          "https://i.ibb.co/LXp8KRhf/Render-3-png.png",
-          "https://i.ibb.co/nMy0n75F/Render-4.png",
-          "https://i.ibb.co/C33Bx2FP/Render-5-1.png",
-          "https://i.ibb.co/Cp7T1mLZ/Render-6.png",
-          "https://i.ibb.co/KjR8tvfK/Render-7-1.png",
-          "https://i.ibb.co/Y4FbMrVv/Render-9.png",
-          "https://i.ibb.co/W410zRjL/Render-10.png"
+          "/projects/jungle-render-1.png",
+          "/projects/jungle-render-2.png",
+          "/projects/jungle-render-3.png",
+          "/projects/jungle-render-4.png",
+          "/projects/jungle-render-5.png",
+          "/projects/jungle-render-6.png",
+          "/projects/jungle-render-7.png",
+          "/projects/jungle-render-9.png",
+          "/projects/jungle-render-10.png"
         ]
       }
     }
